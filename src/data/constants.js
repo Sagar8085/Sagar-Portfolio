@@ -216,7 +216,7 @@ export const education = [
     date: "Oct 2019 - Sep 2021",
     grade: "",
     desc: "I have completed my MCA (Master of Computer Applications) from ITM University, Gwalior, where I acquired comprehensive knowledge and skills in various aspects of computer science over four semesters",
-    degree: "Bachelor of Technology - BTech, Computer Science and Engineering",
+    degree: "MCA (Master of Computer Applications)",
   },
   {
     id: 1,
