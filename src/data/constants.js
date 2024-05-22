@@ -322,10 +322,10 @@ export const projects = [
 
   {
     id: 3,
-    title: "Kindbox (admin ,vendor and User) ",
+    title: "Encora (admin ,vendor and User) ",
     date: "Jul 2021",
     description:
-      "Kindbox offers the most sustainable eco-conscious way to enjoy takeout food from your favorite food joints and stop the abuse of single-use",
+      "Encora  offers the most sustainable eco-conscious way to enjoy takeout food from your favorite food joints and stop the abuse of single-use",
     Environment:
       "Linux (Ubuntu 16.04),FCM (for notification) , reactJs, ES-6, HTML5, CSS3, JSON, REST Web services.",
     roles_and_responsibilities: [
@@ -339,11 +339,11 @@ export const projects = [
     ],
 
     image:
-      "https://github.com/Sagar8085/portfolio-image/blob/main/kindbox.PNG?raw=true",
+      "https://media.licdn.com/dms/image/C560BAQEuTCFKhvbnoA/company-logo_200_200/0/1630646418812?e=1724284800&v=beta&t=TGrkS-xmIC_4AZjJvJgBDwmGowCWnFQdjmh1rWRaUjA",
     tags: ["React Js", "Bootsrap", "SCSS"],
     category: "web app",
     github: "#",
-    webapp: "https://www.thekindbox.us/",
+    webapp: "https://encora.co/",
   },
 ];
 
