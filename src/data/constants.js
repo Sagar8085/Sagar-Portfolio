@@ -339,7 +339,7 @@ export const projects = [
     ],
 
     image:
-      "https://media.licdn.com/dms/image/C560BAQEuTCFKhvbnoA/company-logo_200_200/0/1630646418812?e=1724284800&v=beta&t=TGrkS-xmIC_4AZjJvJgBDwmGowCWnFQdjmh1rWRaUjA",
+      "https://raw.githubusercontent.com/Sagar8085/portfolio-image/main/encora.PNG",
     tags: ["React Js", "Bootsrap", "SCSS"],
     category: "web app",
     github: "#",
