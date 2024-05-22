@@ -140,7 +140,7 @@ export const experiences = [
     img: "https://eighty5technologies.com/assets/images/logo/logo.svg",
     role: "MERN Stack developer ",
     company: "EIGHTYFIVE TECHNOLOGIES PVT LTD",
-    date: "June 2023 - Present",
+    date: "November 2023 - Present",
     desc: [
       "Working on the frontend of the web application using ReactJS, Redux, and Material UI.",
     ],
