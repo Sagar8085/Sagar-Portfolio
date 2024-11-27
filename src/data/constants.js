@@ -2,7 +2,7 @@ export const Bio = {
   name: "Sagar Shrivastava",
   roles: ["Full Stack Developer", "Programmer"],
   description:
-    "Motivated MERN Stack developer with 2 years of experience. Passionate about learning and delivering high-quality results. With a positive attitude and a growth mindset, I'm poised to make meaningful contributions and achieve greatness together in every project.",
+    "Motivated MERN Stack developer with 3 years of experience. Passionate about learning and delivering high-quality results. With a positive attitude and a growth mindset, I'm poised to make meaningful contributions and achieve greatness together in every project.",
   github: "https://github.com/Sagar8085/",
   resume:
     "https://drive.google.com/drive/u/0/folders/1B9f7crGSOeT1dXD5TXW8VZ_wd8wGp12L",
@@ -158,8 +158,8 @@ export const experiences = [
     id: 1,
     img: "https://media.licdn.com/dms/image/D4D0BAQHpIL5N1P_3dQ/company-logo_200_200/0/1690213784335/testflo_software_solutions_logo?e=1724284800&v=beta&t=2MnYE-XpcwVriLzhubTspXatg2OzcQkr4gyzfjR6H80",
     role: "Software Developer",
-    company: "Testflo",
-    date: "May 2022 - Oct 2023",
+    company: "Techvalens Web and Mobile Software Solutions.",
+    date: "May 2022 - Nov 2023",
     desc: [
       "Worked on React.js and its core principles.",
       "Worked with newerspecifications of EcmaScript.",
@@ -167,7 +167,7 @@ export const experiences = [
       "Experienced in all project phases using Waterfall and Agile Methodologies.",
       "Ability to understand business requirements and translate them into technicalrequirements.",
       "Ability to work well in both team and individual environments",
-      "Internship at testflo Software for a period of 3 months.",
+      "Internship at Techvalens Web and Mobile Software Solutions Software for a period of 3 months.",
     ],
     skills: [
       "ReactJS",
@@ -181,13 +181,13 @@ export const experiences = [
       "SCSS",
       "S3 Bucket",
     ],
-    doc: "https://github.com/Sagar8085/portfolio-image/blob/main/testflo.jpg?raw=true",
+    doc: "",
   },
   {
     id: 2,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpCTW0AcvZWKpoDjxhKvAw_qWNIcS6470KpvXeTt7iBQ&s",
     role: "Fullstack Externship",
-    company: "Flipr",
+    company: "Universal Informatics",
     date: "Jan 2021 - May 2021",
     desc: [
       "Engaged in a 6-month internship at Universal Informatics, focusing on web development using the MERN stack – MongoDB, Express.js, React.js, and Node.js.",
