@@ -156,7 +156,7 @@ export const experiences = [
   },
   {
     id: 1,
-    img: "https://media.licdn.com/dms/image/D4D0BAQHpIL5N1P_3dQ/company-logo_200_200/0/1690213784335/testflo_software_solutions_logo?e=1724284800&v=beta&t=2MnYE-XpcwVriLzhubTspXatg2OzcQkr4gyzfjR6H80",
+    img: "https://github.com/Sagar8085/portfolio-image/blob/main/techvalens.jpeg?raw=true",
     role: "Software Developer",
     company: "Techvalens Web and Mobile Software Solutions.",
     date: "May 2022 - Nov 2023",
