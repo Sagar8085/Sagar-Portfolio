@@ -1,25 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import HeroImg from "../../images/HeroImage.jpg";
-import { Bio, experiences } from "../../data/constants";
-import { Container, PrimaryButton, OutlineButton } from "../ui";
-import { ArrowRightIcon } from "../ui/Icons";
+import { Bio } from "../../data/constants";
+import { heroSummary } from "../../utils/content";
+import { Container, PrimaryButton, OutlineButton, Blob } from "../ui";
+import { ArrowRightIcon, GithubIcon, StarIcon } from "../ui/Icons";
 
 const Wrapper = styled.section`
-  padding: 72px 0 56px;
+  padding: 72px 0 96px;
+  overflow: hidden;
   @media (max-width: 640px) {
-    padding: 48px 0 40px;
+    padding: 48px 0 72px;
   }
 `;
 
 const Grid = styled(Container)`
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 64px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 56px;
   align-items: center;
-  @media (max-width: 900px) {
+  @media (max-width: 920px) {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 56px;
   }
 `;
 
@@ -27,43 +29,54 @@ const Pill = styled.p`
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 14px;
-  border: 1px solid ${({ theme }) => theme.border};
+  padding: 6px 14px 6px 12px;
   border-radius: 999px;
-  background: ${({ theme }) => theme.surface};
-  font-family: ${({ theme }) => theme.fontMono};
-  font-size: 12px;
-  color: ${({ theme }) => theme.text};
+  border: 1px solid ${({ theme }) => theme.borderStrong};
+  background: ${({ theme }) => theme.pastels[0].soft};
+  font-size: 14px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.pastels[0].ink};
 `;
 
 const Dot = styled.span`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #16a34a;
+  background: ${({ theme }) => theme.accent};
   flex: none;
 `;
 
-const Name = styled.h1`
-  margin-top: 28px;
-  font-family: ${({ theme }) => theme.fontHead};
-  font-weight: 700;
-  font-size: clamp(52px, 9vw, 92px);
-  line-height: 0.95;
+const Title = styled.h1`
+  margin-top: 24px;
+  font-weight: 800;
+  font-size: clamp(44px, 7vw, 72px);
+  line-height: 1.04;
   letter-spacing: -0.035em;
   color: ${({ theme }) => theme.text};
 `;
 
 const Period = styled.span`
+  color: ${({ theme }) => theme.amber};
+`;
+
+const TypedLine = styled.p`
+  margin-top: 18px;
+  font-family: ${({ theme }) => theme.fontMono};
+  font-size: clamp(16px, 2.2vw, 20px);
   color: ${({ theme }) => theme.accent};
 `;
 
-const Summary = styled.p`
-  margin-top: 28px;
-  max-width: 580px;
-  font-size: 17px;
-  line-height: 1.65;
+const Prompt = styled.span`
   color: ${({ theme }) => theme.muted};
+  margin-right: 8px;
+`;
+
+const Summary = styled.p`
+  margin-top: 20px;
+  max-width: 560px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: ${({ theme }) => theme.body};
 `;
 
 const Actions = styled.div`
@@ -73,94 +86,190 @@ const Actions = styled.div`
   margin-top: 32px;
 `;
 
-const Figure = styled.figure`
+/* ---------- Right column art ---------- */
+
+const Art = styled.div`
   position: relative;
   width: 100%;
-  max-width: 420px;
-  justify-self: end;
-  @media (max-width: 900px) {
-    justify-self: start;
-    max-width: 360px;
-  }
+  max-width: 480px;
+  aspect-ratio: 1;
+  justify-self: center;
 `;
 
-const Portrait = styled.img`
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: ${({ theme }) => theme.radiusCard};
-  border: 1px solid ${({ theme }) => theme.border};
-  background: #e5e7eb;
-`;
-
-const Badge = styled.figcaption`
+const Photo = styled.img`
   position: absolute;
-  left: -24px;
-  bottom: 32px;
-  padding: 14px 18px;
+  top: 50%;
+  left: 50%;
+  width: 62%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 6px solid #ffffff;
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(79, 70, 229, 0.22);
+`;
+
+const CodeCard = styled.div`
+  position: absolute;
+  left: -4%;
+  bottom: 10%;
+  padding: 14px 16px;
   border-radius: 14px;
   background: ${({ theme }) => theme.dark};
-  color: #ffffff;
-  box-shadow: 0 12px 32px rgba(14, 17, 22, 0.18);
-  @media (max-width: 900px) {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+  box-shadow: 0 18px 40px rgba(22, 22, 29, 0.25);
+  font-family: ${({ theme }) => theme.fontMono};
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #e5e7eb;
+  @media (max-width: 520px) {
+    left: 0;
+    font-size: 11px;
   }
 `;
 
-const BadgeLabel = styled.span`
-  display: block;
-  font-family: ${({ theme }) => theme.fontMono};
-  font-size: 11px;
-  color: ${({ theme }) => theme.darkMuted};
+const Lights = styled.span`
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
 `;
 
-const BadgeValue = styled.span`
-  display: block;
-  margin-top: 4px;
-  font-family: ${({ theme }) => theme.fontHead};
-  font-weight: 600;
-  font-size: 15px;
+const Kw = styled.span`
+  color: #c4b5fd;
+`;
+const Str = styled.span`
+  color: #fcd34d;
+`;
+const Punc = styled.span`
+  color: #9ca3af;
 `;
 
-// "First Last" -> ["First", "Last"]; keeps any middle names on the last line.
-const [firstName, ...restName] = Bio.name.split(" ");
-const currentCompany = experiences[0]?.company.replace(" - ", ", ");
+const ExpBadge = styled.div`
+  position: absolute;
+  right: -2%;
+  top: 12%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid ${({ theme }) => theme.border};
+  box-shadow: 0 14px 34px rgba(22, 22, 29, 0.1);
+  @media (max-width: 520px) {
+    right: 0;
+  }
+`;
 
-const HeroSection = () => (
-  <Wrapper id="about" aria-labelledby="hero-name">
-    <Grid>
-      <div>
-        <Pill>
-          <Dot aria-hidden="true" />
-          {Bio.roles[0]}
-          {currentCompany && ` · ${currentCompany}`}
-        </Pill>
-        <Name id="hero-name">
-          {firstName}
-          <br />
-          {restName.join(" ")}
-          <Period aria-hidden="true">.</Period>
-        </Name>
-        <Summary>{Bio.description}</Summary>
-        <Actions>
-          <PrimaryButton href={Bio.resume} download="Sagar Shrivastava SDE.pdf">
-            Check Resume
-            <ArrowRightIcon size={16} />
-          </PrimaryButton>
-          <OutlineButton href="#contact">Get in touch</OutlineButton>
-        </Actions>
-      </div>
-      <Figure>
-        <Portrait src={HeroImg} alt={`Portrait of ${Bio.name}`} width="420" height="525" />
-        <Badge>
-          <BadgeLabel>Stack</BadgeLabel>
-          <BadgeValue>{Bio.stack.slice(0, 5).join(" · ")}</BadgeValue>
-        </Badge>
-      </Figure>
-    </Grid>
-  </Wrapper>
-);
+const StarTile = styled.span`
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: ${({ theme }) => theme.pastels[1].tint};
+  color: ${({ theme }) => theme.amber};
+  svg {
+    fill: currentColor;
+  }
+`;
+
+const BadgeText = styled.span`
+  display: grid;
+  line-height: 1.2;
+  strong {
+    font-size: 16px;
+    font-weight: 800;
+    color: ${({ theme }) => theme.text};
+  }
+  span {
+    font-size: 12px;
+    color: ${({ theme }) => theme.muted};
+  }
+`;
+
+const HeroSection = () => {
+  const role = Bio.roles[0];
+  return (
+    <Wrapper id="top" aria-labelledby="hero-title">
+      <Grid>
+        <div>
+          <Pill className="hero-in" style={{ "--i": 0 }}>
+            <Dot className="ping" aria-hidden="true" />
+            {Bio.title} · {Bio.stats.years} years
+          </Pill>
+          <Title id="hero-title" className="hero-in" style={{ "--i": 1 }}>
+            Hi, I&rsquo;m {Bio.name}
+            <Period aria-hidden="true">.</Period>
+          </Title>
+          <TypedLine className="hero-in" style={{ "--i": 2 }}>
+            <Prompt aria-hidden="true">&gt;</Prompt>
+            <span className="typewriter" style={{ "--chars": role.length }}>
+              {role}
+            </span>
+          </TypedLine>
+          <Summary className="hero-in" style={{ "--i": 3 }}>
+            {heroSummary}
+          </Summary>
+          <Actions className="hero-in" style={{ "--i": 4 }}>
+            <PrimaryButton href={Bio.resume} download="Sagar Shrivastava SDE.pdf">
+              Check Resume
+              <ArrowRightIcon className="nudge" size={16} />
+            </PrimaryButton>
+            <OutlineButton href={Bio.github} target="_blank" rel="noopener noreferrer">
+              <GithubIcon size={16} />
+              GitHub
+            </OutlineButton>
+          </Actions>
+        </div>
+
+        <Art className="hero-in" style={{ "--i": 3 }}>
+          <Blob
+            className="blob"
+            $color="#E0E3FF"
+            style={{ inset: "6%" }}
+          />
+          <Blob
+            className="blob-reverse"
+            $color="transparent"
+            style={{ inset: "2%", border: "2px dashed #A5B4FC" }}
+          />
+          <Photo src={HeroImg} alt={`Portrait of ${Bio.name}`} width="300" height="300" />
+          <CodeCard className="float-slow" aria-hidden="true">
+            <Lights>
+              <span style={{ background: "#FF5F57" }} />
+              <span style={{ background: "#FEBC2E" }} />
+              <span style={{ background: "#28C840" }} />
+            </Lights>
+            <Kw>const</Kw> stack <Punc>= [</Punc>
+            <br />
+            &nbsp;&nbsp;<Str>'React'</Str>
+            <Punc>,</Punc> <Str>'Spring'</Str>
+            <Punc>,</Punc>
+            <br />
+            &nbsp;&nbsp;<Str>'Playwright'</Str>
+            <br />
+            <Punc>];</Punc>
+          </CodeCard>
+          <ExpBadge className="float">
+            <StarTile aria-hidden="true">
+              <StarIcon size={16} />
+            </StarTile>
+            <BadgeText>
+              <strong>{Bio.stats.years} yrs</strong>
+              <span>experience</span>
+            </BadgeText>
+          </ExpBadge>
+        </Art>
+      </Grid>
+    </Wrapper>
+  );
+};
 
 export default HeroSection;

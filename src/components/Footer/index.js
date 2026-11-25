@@ -15,7 +15,7 @@ const Inner = styled(Container)`
   gap: 12px 32px;
   padding-top: 28px;
   padding-bottom: 28px;
-  font-size: 13px;
+  font-size: 14px;
   color: ${({ theme }) => theme.muted};
   @media (max-width: 640px) {
     flex-direction: column;
@@ -40,14 +40,18 @@ const Social = styled.ul`
     text-decoration: underline;
     text-underline-offset: 3px;
     &:hover {
-      color: ${({ theme }) => theme.text};
+      color: ${({ theme }) => theme.accent};
     }
   }
 `;
 
-const StackLine = styled.p`
+const Made = styled.p`
   font-family: ${({ theme }) => theme.fontMono};
-  font-size: 12px;
+  font-size: 13px;
+  code {
+    font-family: inherit;
+    color: ${({ theme }) => theme.accent};
+  }
 `;
 
 const SOCIAL_LINKS = [
@@ -76,7 +80,9 @@ const Footer = () => (
           </Social>
         )}
       </Left>
-      <StackLine>{Bio.stack.join(" · ")}</StackLine>
+      <Made>
+        made with <code>&lt;code/&gt;</code> &amp; coffee
+      </Made>
     </Inner>
   </FooterBar>
 );

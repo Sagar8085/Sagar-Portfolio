@@ -1,135 +1,181 @@
 import React from "react";
 import styled from "styled-components";
 import { experiences } from "../../data/constants";
-import { Container, Section, SectionHead, Eyebrow, Heading, Lead } from "../ui";
-import { ArrowRightIcon } from "../ui/Icons";
+import { pastel } from "../../utils/Themes";
+import { Container, Section, Label, Heading, Chip, ChipList } from "../ui";
 
-const Band = styled(Section)`
-  background: ${({ theme }) => theme.dark};
-  color: ${({ theme }) => theme.darkText};
+const Inner = styled(Container)`
+  max-width: calc(860px + 64px);
 `;
 
-const Roles = styled.ol`
+const Head = styled.div`
+  margin-bottom: 48px;
+`;
+
+const Timeline = styled.ol`
+  position: relative;
   list-style: none;
-  border-bottom: 1px solid ${({ theme }) => theme.darkLine};
-`;
-
-const Role = styled.li`
   display: grid;
-  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
-  gap: 40px;
-  padding: 40px 0;
-  border-top: 1px solid ${({ theme }) => theme.darkLine};
-  @media (max-width: 860px) {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 32px 0;
+  gap: 28px;
+  padding-left: 40px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    border-radius: 2px;
+    background: ${({ theme }) => theme.borderStrong};
+  }
+  @media (max-width: 520px) {
+    padding-left: 30px;
+    &::before {
+      left: 7px;
+    }
   }
 `;
 
-const Dates = styled.p`
-  font-family: ${({ theme }) => theme.fontMono};
-  font-size: 12px;
-  color: ${({ theme }) => theme.darkMuted};
+const Item = styled.li`
+  position: relative;
 `;
 
-const Title = styled.h3`
-  margin-top: 10px;
-  font-family: ${({ theme }) => theme.fontHead};
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 1.2;
-  color: ${({ theme }) => theme.darkText};
+const Dot = styled.span`
+  position: absolute;
+  left: -34px;
+  top: 30px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: ${({ $color }) => $color};
+  box-shadow: 0 0 0 4px #ffffff;
+  @media (max-width: 520px) {
+    left: -28px;
+  }
+`;
+
+const Card = styled.article`
+  padding: 28px;
+  border-radius: ${({ theme }) => theme.radiusCard};
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid ${({ theme }) => theme.border};
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(22, 22, 29, 0.07);
+  }
+  @media (max-width: 520px) {
+    padding: 20px;
+  }
+`;
+
+const CardHead = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+`;
+
+const Role = styled.h3`
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: ${({ theme }) => theme.text};
+`;
+
+const DateBadge = styled.span`
+  padding: 4px 10px;
+  border-radius: ${({ theme }) => theme.radiusChip};
+  background: ${({ $tint }) => $tint.tint};
+  color: ${({ $tint }) => $tint.ink};
+  font-family: ${({ theme }) => theme.fontMono};
+  font-size: 12px;
+  font-weight: 500;
 `;
 
 const Company = styled.p`
-  margin-top: 6px;
+  margin-top: 4px;
   font-size: 15px;
-  color: ${({ theme }) => theme.darkBody};
+  font-weight: 600;
+  color: ${({ theme }) => theme.muted};
 `;
 
 const Bullets = styled.ul`
   list-style: none;
   display: grid;
-  gap: 14px;
+  gap: 10px;
+  margin-top: 18px;
 `;
 
 const Bullet = styled.li`
-  display: grid;
-  grid-template-columns: 16px minmax(0, 1fr);
-  gap: 12px;
+  position: relative;
+  padding-left: 20px;
   font-size: 15px;
-  line-height: 1.6;
-  color: ${({ theme }) => theme.darkBody};
-  svg {
-    margin-top: 4px;
-    color: ${({ theme }) => theme.darkAccent};
+  line-height: 1.65;
+  color: ${({ theme }) => theme.body};
+  &::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.68em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: ${({ $ink }) => $ink};
   }
 `;
 
-const Tags = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 24px;
-`;
-
-const Tag = styled.li`
-  padding: 4px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: ${({ theme }) => theme.radiusChip};
-  font-size: 12px;
-  color: #e6e8ec;
-`;
-
 const Experience = () => (
-  <Band id="experience" aria-labelledby="experience-heading">
-    <Container>
-      <SectionHead>
-        <div>
-          <Eyebrow $onDark>02 / Experience</Eyebrow>
-          <Heading id="experience-heading" $onDark>
-            Where I&rsquo;ve built
-          </Heading>
-        </div>
-        <Lead $onDark>
-          My work experience as a software engineer and working on different companies and
-          projects.
-        </Lead>
-      </SectionHead>
-      <Roles>
-        {experiences.map((exp) => (
-          <Role key={exp.id}>
-            <div>
-              <Dates>{exp.date}</Dates>
-              <Title>{exp.role}</Title>
-              <Company>{exp.company}</Company>
-            </div>
-            <div>
-              {exp.desc?.length > 0 && (
-                <Bullets>
-                  {exp.desc.map((item, index) => (
-                    <Bullet key={index}>
-                      <ArrowRightIcon size={14} />
-                      <span>{item}</span>
-                    </Bullet>
-                  ))}
-                </Bullets>
-              )}
-              {exp.skills?.length > 0 && (
-                <Tags aria-label="Skills used">
-                  {exp.skills.map((skill, index) => (
-                    <Tag key={index}>{skill.trim()}</Tag>
-                  ))}
-                </Tags>
-              )}
-            </div>
-          </Role>
-        ))}
-      </Roles>
-    </Container>
-  </Band>
+  <Section id="experience" aria-labelledby="experience-heading">
+    <Inner>
+      <Head className="reveal">
+        <Label>{"// experience"}</Label>
+        <Heading id="experience-heading">Where I&rsquo;ve worked</Heading>
+      </Head>
+      <Timeline>
+        {experiences.map((exp, index) => {
+          // First role indigo, the rest amber.
+          const tint = pastel(index === 0 ? 0 : 1);
+          const dotColor = index === 0 ? "#4F46E5" : "#F59E0B";
+          return (
+            <Item key={exp.id} className="reveal">
+              <Dot
+                $color={dotColor}
+                className={index === 0 ? "ping" : undefined}
+                aria-hidden="true"
+              />
+              <Card>
+                <CardHead>
+                  <Role>{exp.role}</Role>
+                  <DateBadge $tint={tint}>{exp.date}</DateBadge>
+                </CardHead>
+                <Company>{exp.company}</Company>
+                {exp.desc?.length > 0 && (
+                  <Bullets>
+                    {exp.desc.map((item, i) => (
+                      <Bullet key={i} $ink={tint.ink}>
+                        {item}
+                      </Bullet>
+                    ))}
+                  </Bullets>
+                )}
+                {exp.skills?.length > 0 && (
+                  <ChipList as="ul" style={{ listStyle: "none", marginTop: 20 }} aria-label="Skills used">
+                    {exp.skills.map((skill, i) => (
+                      <li key={i}>
+                        <Chip $outline>{skill.trim()}</Chip>
+                      </li>
+                    ))}
+                  </ChipList>
+                )}
+              </Card>
+            </Item>
+          );
+        })}
+      </Timeline>
+    </Inner>
+  </Section>
 );
 
 export default Experience;

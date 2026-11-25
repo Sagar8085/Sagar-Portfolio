@@ -1,89 +1,100 @@
 import React from "react";
 import styled from "styled-components";
 import { education } from "../../data/constants";
-import { Container, Section, SectionHead, Eyebrow, Heading, Lead } from "../ui";
+import { pastel } from "../../utils/Themes";
+import { Container, Section, Label, Heading } from "../ui";
+import { GradCapIcon } from "../ui/Icons";
 
-const Card = styled.ol`
+const Head = styled.div`
+  margin-bottom: 48px;
+`;
+
+const Grid = styled.ul`
   list-style: none;
-  padding: 8px 32px;
-  background: ${({ theme }) => theme.surface};
-  border: 1px solid ${({ theme }) => theme.border};
-  border-radius: ${({ theme }) => theme.radiusCard};
-  @media (max-width: 640px) {
-    padding: 4px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  @media (max-width: 1040px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-const Row = styled.li`
+const Card = styled.li`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  border-radius: ${({ theme }) => theme.radiusCard};
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid ${({ theme }) => theme.border};
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 34px rgba(22, 22, 29, 0.07);
+  }
+`;
+
+const IconTile = styled.span`
   display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
-  gap: 32px;
-  padding: 28px 0;
-  border-top: 1px solid ${({ theme }) => theme.border};
-  &:first-child {
-    border-top: none;
-  }
-  @media (max-width: 720px) {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 22px 0;
-  }
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: ${({ $tint }) => $tint.tint};
+  color: ${({ $tint }) => $tint.ink};
+  margin-bottom: 6px;
 `;
 
 const Dates = styled.p`
-  padding-top: 4px;
   font-family: ${({ theme }) => theme.fontMono};
   font-size: 12px;
   color: ${({ theme }) => theme.muted};
 `;
 
 const Degree = styled.h3`
-  font-family: ${({ theme }) => theme.fontHead};
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 1.3;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
   color: ${({ theme }) => theme.text};
 `;
 
 const School = styled.p`
-  margin-top: 6px;
-  font-size: 15px;
-  color: ${({ theme }) => theme.text};
+  font-size: 14px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.body};
 `;
 
 const Note = styled.p`
-  margin-top: 8px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.6;
   color: ${({ theme }) => theme.muted};
 `;
 
 const Education = () => (
-  <Section id="education" aria-labelledby="education-heading" style={{ paddingTop: 0 }}>
+  <Section id="education" $soft $bordered aria-labelledby="education-heading">
     <Container>
-      <SectionHead>
-        <div>
-          <Eyebrow>04 / Education</Eyebrow>
-          <Heading id="education-heading">Learning path</Heading>
-        </div>
-        <Lead>
-          My education has been a journey of self-discovery and growth. My educational details
-          are as follows.
-        </Lead>
-      </SectionHead>
-      <Card>
-        {education.map((item) => (
-          <Row key={item.id}>
+      <Head className="reveal">
+        <Label>{"// education"}</Label>
+        <Heading id="education-heading">Education</Heading>
+      </Head>
+      <Grid>
+        {education.map((item, index) => (
+          <Card key={item.id} className="reveal">
+            <IconTile $tint={pastel(index)} aria-hidden="true">
+              <GradCapIcon size={22} />
+            </IconTile>
             <Dates>{item.date}</Dates>
-            <div>
-              <Degree>{item.degree.trim()}</Degree>
-              <School>{item.school}</School>
-              {item.grade && <Note>Grade: {item.grade}</Note>}
-              {item.desc && <Note>{item.desc}</Note>}
-            </div>
-          </Row>
+            <Degree>{item.degree.trim()}</Degree>
+            <School>{item.school}</School>
+            {item.grade && <Note>Grade: {item.grade}</Note>}
+            {item.desc && <Note>{item.desc}</Note>}
+          </Card>
         ))}
-      </Card>
+      </Grid>
     </Container>
   </Section>
 );

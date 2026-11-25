@@ -1,5 +1,6 @@
 export const Bio = {
   name: "Sagar Shrivastava",
+  title: "Software Engineer",
   roles: ["Full Stack Developer", "Programmer"],
   description:
     "Full Stack Developer with 4.5 years of experience delivering production web applications end to end - interface, services and test coverage - across healthcare, e-commerce, event-management and water-management domains. I build frontends in React.js, Next.js, Vue.js and TypeScript, design REST APIs in Node.js and Spring Boot against PostgreSQL and MongoDB, and engineer test automation with Selenium WebDriver, TestNG and Playwright.",
@@ -18,6 +19,11 @@ export const Bio = {
 export const skills = [
   {
     title: "Frontend",
+    glyph: "</>",
+    description:
+      "Reusable component architectures, Redux state management and interactive Chart.js dashboards in React.js, Next.js and Vue.js.",
+    // Project ids (see `projects` below) where these tools were used.
+    seenIn: [1, 2, 5, 3],
     skills: [
       {
         name: "React Js",
@@ -83,6 +89,11 @@ export const skills = [
   },
   {
     title: "Backend",
+    glyph: "{ }",
+    description:
+      "REST APIs and backend services in Node.js and Spring Boot against PostgreSQL and MongoDB.",
+    // Project ids (see `projects` below) where these tools were used.
+    seenIn: [0, 5, 2],
     skills: [
       {
         name: "Java",
@@ -124,6 +135,11 @@ export const skills = [
 
   {
     title: "Testing / QA",
+    glyph: "check",
+    description:
+      "End-to-end regression suites with Selenium WebDriver, TestNG and Maven on a Page Object Model framework, plus Postman API validation.",
+    // Project ids (see `projects` below) where these tools were used.
+    seenIn: [0, 3],
     skills: [
       {
         name: "Selenium WebDriver",
@@ -165,6 +181,11 @@ export const skills = [
 
   {
     title: "Others",
+    glyph: "$_",
+    description:
+      "Version control, containers, cloud storage and Agile delivery tooling.",
+    // Project ids (see `projects` below) where these tools were used.
+    seenIn: [5, 3],
     skills: [
       {
         name: "Git",
@@ -332,7 +353,7 @@ export const projects = [
     Environment:
       "Java, Spring Boot, REST APIs, Selenium WebDriver, TestNG, Maven, Page Object Model, Postman, SQL, Azure DevOps.",
     image:
-      "https://placehold.co/800x450/1C1E27/854CE6/png?text=LIMS+Test+Automation&font=montserrat",
+      "",
     tags: ["Java", "Spring Boot", "Selenium", "TestNG", "Maven", "POM", "Postman", "SQL"],
     category: "qa automation",
     github: "#",
@@ -354,7 +375,7 @@ export const projects = [
     ],
     Environment:
       "Next.js, React.js, JavaScript (ES6), HTML5, CSS3, Responsive Design.",
-    image: "/encora-web.png",
+    image: "/projects/encora-returns.png",
     tags: ["Next Js", "React Js", "JavaScript", "HTML5", "CSS3", "Responsive UI"],
     category: "web app",
     github: "#",
@@ -377,7 +398,7 @@ export const projects = [
     Environment:
       "Vue.js, JavaScript (ES6), Chart.js, REST APIs, HTML5, CSS3, Git, Agile/Scrum.",
     image:
-      "https://raw.githubusercontent.com/Sagar8085/portfolio-image/refs/heads/main/safewaters.png",
+      "/projects/safewaters.png",
     tags: ["Vue Js", "Chart.js", "REST APIs", "JavaScript", "HTML5", "CSS3"],
     category: "web app",
     github: "#",
@@ -406,7 +427,7 @@ export const projects = [
     Environment:
       "Vuejs, ES-6, HTML5, CSS3, JSON, REST Web services, Linux (Ubuntu 16.04), websocket, Playwright, TypeScript, Postman.",
     image:
-      "https://github.com/Sagar8085/portfolio-image/blob/main/heba%20pilates.PNG?raw=true",
+      "/projects/heba-pilates.png",
     tags: ["VueJs", "S3 bucket", "vuex", "Bootstrap", "Playwright", "Care Manager", "QA Automation"],
     category: "web app",
     github: "#",
@@ -421,7 +442,7 @@ export const projects = [
       "A Todo Web App made with PHP and Bootstrap. It has a login page where users can log in with their Google account. It has a sidebar where users can see all the tasks and can create a new task. It has a calendar where users can see all the tasks on a particular date. It has a search bar where users can search for a particular task.",
     Environment: "PHP, Bootstrap, Local Storage, HTML5, CSS3.",
     image:
-      "https://github.com/Sagar8085/portfolio-image/blob/main/imeta.PNG?raw=true",
+      "/projects/imetatech.png",
     tags: ["php", "Local Storage", "Bootstrap"],
     category: "web app",
   },
@@ -445,7 +466,7 @@ export const projects = [
     Environment:
       "Linux (Ubuntu 16.04), FCM (for notification) , ReactJs, ES-6, HTML5, CSS3, JSON, REST Web services.",
     image:
-      "https://github.com/Sagar8085/portfolio-image/blob/main/waterfront.PNG?raw=true",
+      "/projects/waterfront-concerts.png",
 
     tags: [
       "React Js",
@@ -481,7 +502,7 @@ export const projects = [
     ],
 
     image:
-      "https://raw.githubusercontent.com/Sagar8085/portfolio-image/main/encora.PNG",
+      "/projects/encora-food.png",
     tags: ["React Js", "Bootstrap", "SCSS"],
     category: "web app",
     github: "#",

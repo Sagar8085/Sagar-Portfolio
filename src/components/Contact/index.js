@@ -1,113 +1,85 @@
 import React from "react";
 import styled from "styled-components";
 import { Bio } from "../../data/constants";
-import { Container, Eyebrow } from "../ui";
-import { ArrowUpRightIcon } from "../ui/Icons";
+import { Container, Label, PrimaryButton, OutlineButton, Blob } from "../ui";
+import { ArrowRightIcon, GithubIcon } from "../ui/Icons";
 
 const Wrapper = styled.section`
-  padding: 0 0 112px;
+  padding: 104px 0;
   @media (max-width: 640px) {
-    padding-bottom: 72px;
+    padding: 72px 0;
   }
 `;
 
 const Block = styled.div`
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  gap: 40px;
-  align-items: center;
-  padding: 56px;
-  border-radius: ${({ theme }) => theme.radiusCard};
-  background: ${({ theme }) => theme.accent};
-  color: #ffffff;
-  @media (max-width: 820px) {
-    grid-template-columns: 1fr;
-    padding: 40px 28px;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 32px;
+  border-radius: 28px;
+  background: ${({ theme }) => theme.pastels[0].tint};
+  text-align: center;
+  @media (max-width: 640px) {
+    padding: 56px 22px;
   }
 `;
 
-const Label = styled(Eyebrow)`
-  color: rgba(255, 255, 255, 0.88);
+const Content = styled.div`
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
 `;
 
 const Title = styled.h2`
-  font-family: ${({ theme }) => theme.fontHead};
-  font-weight: 700;
-  font-size: clamp(34px, 5vw, 52px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Text = styled.p`
   margin-top: 16px;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.92);
+  font-size: 17px;
+  color: ${({ theme }) => theme.muted};
 `;
 
 const Actions = styled.div`
-  display: grid;
-  gap: 12px;
-`;
-
-const ActionLink = styled.a`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
-  min-height: 48px;
-  padding: 0 18px;
-  border-radius: ${({ theme }) => theme.radiusButton};
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-  &:focus-visible {
-    outline-color: #ffffff;
-  }
-`;
-
-const EmailLink = styled(ActionLink)`
-  background: #ffffff;
-  color: ${({ theme }) => theme.text};
-  border: 1px solid #ffffff;
-  &:hover {
-    background: #eef2ff;
-  }
-`;
-
-const GithubLink = styled(ActionLink)`
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  &:hover {
-    border-color: #ffffff;
-    background: rgba(255, 255, 255, 0.08);
-  }
+  margin-top: 32px;
 `;
 
 const Contact = () => (
   <Wrapper id="contact" aria-labelledby="contact-heading">
     <Container>
-      <Block>
-        <div>
-          <Label>05 / Contact</Label>
-          <Title id="contact-heading">
-            Have a product to ship?
-            <br />
-            Let&rsquo;s talk.
-          </Title>
+      <Block className="reveal">
+        <Blob
+          className="blob"
+          $color="#DDE1FF"
+          style={{ width: 300, height: 300, top: -120, left: -100 }}
+        />
+        <Blob
+          className="blob-reverse"
+          $color="#FFEBC7"
+          style={{ width: 280, height: 280, bottom: -120, right: -90 }}
+        />
+        <Content>
+          <Label>{"// contact"}</Label>
+          <Title id="contact-heading">Let&rsquo;s build something together.</Title>
           <Text>Feel free to reach out to me for any questions or opportunities!</Text>
-        </div>
-        <Actions>
-          <EmailLink href={`mailto:${Bio.email}`}>
-            Email me
-            <ArrowUpRightIcon size={16} />
-          </EmailLink>
-          <GithubLink href={Bio.github} target="_blank" rel="noopener noreferrer">
-            GitHub profile
-            <ArrowUpRightIcon size={16} />
-          </GithubLink>
-        </Actions>
+          <Actions>
+            <PrimaryButton href={`mailto:${Bio.email}`}>
+              Email Me
+              <ArrowRightIcon className="nudge" size={16} />
+            </PrimaryButton>
+            <OutlineButton href={Bio.github} target="_blank" rel="noopener noreferrer">
+              <GithubIcon size={16} />
+              GitHub Profile
+            </OutlineButton>
+          </Actions>
+        </Content>
       </Block>
     </Container>
   </Wrapper>

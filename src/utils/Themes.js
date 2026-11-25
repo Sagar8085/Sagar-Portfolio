@@ -1,38 +1,43 @@
-// Design tokens for the portfolio redesign.
+// Design tokens for the "Simple SDE" portfolio design.
 export const theme = {
-  bg: "#F4F5F7",
+  bg: "#FFFFFF",
+  soft: "#F7F7FB",
   surface: "#FFFFFF",
-  border: "#DADDE3",
-  text: "#0E1116",
-  muted: "#5A6270",
-  dark: "#0E1116",
-  accent: "#2F5BEA",
-  accentHover: "#2349C9",
-  chipBg: "#F0F1F4",
-  chipBorder: "#E4E6EB",
+  border: "#ECECF2",
+  borderStrong: "#E4E4F0",
 
-  // Dark band (experience) colors
-  darkText: "#F4F5F7",
-  darkMuted: "#A9B0BC",
-  darkBody: "#D5D9E0",
-  darkLine: "rgba(255, 255, 255, 0.12)",
-  darkAccent: "#8FA9FF",
+  text: "#16161D",
+  body: "#3F3F4C",
+  muted: "#5E5E6E",
+  faint: "#8A8A99", // 3.4:1 on white: lines and dots only, never text
 
-  // Project card tints: [panel background, panel text]
-  tints: [
-    ["#E3E9FD", "#1E3FB0"],
-    ["#0E1116", "#FFFFFF"],
-    ["#DDF1EC", "#0B5E4A"],
-    ["#FCE8DC", "#9A3412"],
+  accent: "#4F46E5",
+  accentHover: "#3730A3",
+  accentDeep: "#3730A3",
+  accentLine: "#A5B4FC",
+  amber: "#F59E0B", // decorative only (period, star)
+  dark: "#16161D",
+
+  chipBg: "#F4F4F8",
+  chipBorder: "#E4E4F0",
+
+  // Pastel sets rotated across cards: tint (fill), soft (lighter fill), ink (text/accent on tint)
+  pastels: [
+    { name: "indigo", tint: "#EEF0FF", soft: "#F5F6FF", ink: "#4338CA" },
+    { name: "amber", tint: "#FFF4E0", soft: "#FFF9EE", ink: "#B45309" },
+    { name: "mint", tint: "#E6F7F1", soft: "#F1FBF7", ink: "#047857" },
+    { name: "pink", tint: "#FDECF3", soft: "#FEF5F9", ink: "#BE185D" },
   ],
 
-  fontHead: "'Space Grotesk', system-ui, sans-serif",
-  fontBody: "'Inter', system-ui, sans-serif",
+  fontHead: "'Plus Jakarta Sans', system-ui, sans-serif",
+  fontBody: "'Plus Jakarta Sans', system-ui, sans-serif",
   fontMono: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
 
   radiusCard: "20px",
   radiusButton: "12px",
   radiusChip: "8px",
-  maxWidth: "1200px",
+  maxWidth: "1160px",
   sidePadding: "32px",
 };
+
+export const pastel = (index) => theme.pastels[index % theme.pastels.length];

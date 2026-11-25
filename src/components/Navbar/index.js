@@ -1,23 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import { Bio } from "../../data/constants";
 import { Container } from "../ui";
-import { GithubIcon } from "../ui/Icons";
+import { firstName } from "../../utils/content";
 
 const NAV_LINKS = [
+  { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#education", label: "Education" },
-  { href: "#contact", label: "Contact" },
 ];
 
 const Header = styled.header`
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(244, 245, 247, 0.92);
-  backdrop-filter: saturate(180%) blur(10px);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid ${({ theme }) => theme.border};
 `;
 
@@ -26,12 +26,12 @@ const Bar = styled(Container)`
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  min-height: 72px;
+  min-height: 68px;
   @media (max-width: 760px) {
     flex-wrap: wrap;
-    gap: 8px 16px;
+    gap: 6px 16px;
     padding-top: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
   }
 `;
 
@@ -39,25 +39,24 @@ const Brand = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  text-decoration: none;
-  font-family: ${({ theme }) => theme.fontHead};
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.01em;
   color: ${({ theme }) => theme.text};
+  text-decoration: none;
 `;
 
-const Monogram = styled.span`
+const Logo = styled.span`
   display: inline-grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: ${({ theme }) => theme.dark};
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: ${({ theme }) => theme.accent};
   color: #ffffff;
-  font-family: ${({ theme }) => theme.fontHead};
+  font-family: ${({ theme }) => theme.fontMono};
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-weight: 500;
 `;
 
 const Links = styled.ul`
@@ -68,55 +67,65 @@ const Links = styled.ul`
   @media (max-width: 760px) {
     order: 3;
     width: 100%;
-    gap: 4px 20px;
+    gap: 2px 18px;
   }
 `;
 
 const NavLink = styled.a`
+  position: relative;
   display: inline-block;
   padding: 6px 0;
-  font-size: 14px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.text};
+  font-size: 15px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.body};
   text-decoration: none;
-  &:hover {
-    color: ${({ theme }) => theme.accent};
+  transition: color 0.2s ease;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    height: 2px;
+    border-radius: 2px;
+    background: ${({ theme }) => theme.accent};
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  &:hover,
+  &:focus-visible {
+    color: ${({ theme }) => theme.text};
+  }
+  &:hover::after,
+  &:focus-visible::after {
+    transform: scaleX(1);
   }
 `;
 
-const GithubButton = styled.a`
+const ContactButton = styled.a`
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  min-height: 40px;
-  padding: 0 16px;
-  border: 1px solid ${({ theme }) => theme.text};
-  border-radius: 999px;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: ${({ theme }) => theme.radiusButton};
+  background: ${({ theme }) => theme.dark};
+  color: #ffffff;
   font-size: 14px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.text};
+  font-weight: 700;
   text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease;
   &:hover {
-    background: ${({ theme }) => theme.text};
-    color: #ffffff;
+    background: ${({ theme }) => theme.accent};
   }
 `;
-
-const initials = (name) =>
-  name
-    .split(" ")
-    .filter(Boolean)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
 
 const Navbar = () => (
   <Header>
     <Bar as="nav" aria-label="Primary">
-      <Brand href="#about">
-        <Monogram aria-hidden="true">{initials(Bio.name)}</Monogram>
-        {Bio.name}
+      <Brand href="#top">
+        <Logo aria-hidden="true">&lt;/&gt;</Logo>
+        {firstName}
       </Brand>
       <Links>
         {NAV_LINKS.map((link) => (
@@ -125,10 +134,7 @@ const Navbar = () => (
           </li>
         ))}
       </Links>
-      <GithubButton href={Bio.github} target="_blank" rel="noopener noreferrer">
-        <GithubIcon size={16} />
-        GitHub
-      </GithubButton>
+      <ContactButton href="#contact">Contact</ContactButton>
     </Bar>
   </Header>
 );
