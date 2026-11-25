@@ -11,7 +11,7 @@ const Container = styled.div`
   left: 0;
   background-color: #000000a7;
   display: flex;
-  align-items: top;
+  align-items: flex-start;
   justify-content: center;
   overflow-y: scroll;
   transition: all 0.5s ease;
@@ -22,6 +22,7 @@ const Wrapper = styled.div`
   width: 100%;
   border-radius: 16px;
   margin: 50px 12px;
+  outline: none;
   height: min-content;
   background-color: ${({ theme }) => theme.card};
   color: ${({ theme }) => theme.text_primary};
@@ -105,6 +106,10 @@ const Tag = styled.div`
 `;
 
 const Members = styled.div`
+  ul {
+    padding-left: 20px;
+    margin: 0;
+  }
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -180,6 +185,8 @@ const Button = styled.a`
   }
 `;
 
+const isValidLink = (url) => Boolean(url) && url !== "#";
+
 const index = ({ openModal, setOpenModal }) => {
   const project = openModal?.project;
   return (
@@ -198,21 +205,22 @@ const index = ({ openModal, setOpenModal }) => {
             }}
             onClick={() => setOpenModal({ state: false, project: null })}
           />
-          <Image src={project?.image} />
+          <Image src={project?.image} alt={project?.title} />
           <Title>{project?.title}</Title>
           {/* <Date>{project.date}</Date> */}
           <Tags>
-            {project?.tags.map((tag) => (
-              <Tag>{tag}</Tag>
+            {project?.tags?.map((tag, index) => (
+              <Tag key={index}>{tag}</Tag>
             ))}
           </Tags>
 
-          {project.roles_and_responsibilities && (
+          {project?.description && <Desc>{project.description}</Desc>}
+          {project?.roles_and_responsibilities?.filter(Boolean).length > 0 && (
             <>
               <Label>Roles and Responsibilities:</Label>
               <Members>
                 <ul>
-                  {project?.roles_and_responsibilities.map((member, index) => (
+                  {project.roles_and_responsibilities.filter(Boolean).map((member, index) => (
                     <li key={index}>
                       <Member>
                         <MemberName>{member}</MemberName>
@@ -223,14 +231,23 @@ const index = ({ openModal, setOpenModal }) => {
               </Members>
             </>
           )}
-          <Label>{project ? project.Environment : ""}</Label>
+          {project?.Environment && (
+            <>
+              <Label>Tech Stack:</Label>
+              <Desc>{project.Environment}</Desc>
+            </>
+          )}
           <ButtonGroup>
-            <Button dull href={project?.github} target="new">
-              View Code
-            </Button>
-            <Button href={project?.webapp} target="new">
-              View Live App
-            </Button>
+            {isValidLink(project?.github) && (
+              <Button dull href={project.github} target="_blank" rel="noopener noreferrer">
+                View Code
+              </Button>
+            )}
+            {isValidLink(project?.webapp) && (
+              <Button href={project.webapp} target="_blank" rel="noopener noreferrer">
+                View Live App
+              </Button>
+            )}
           </ButtonGroup>
         </Wrapper>
       </Container>

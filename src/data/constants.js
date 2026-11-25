@@ -2,10 +2,10 @@ export const Bio = {
   name: "Sagar Shrivastava",
   roles: ["Full Stack Developer", "Programmer"],
   description:
-    "Motivated MERN Stack developer with 3 years of experience. Passionate about learning and delivering high-quality results. With a positive attitude and a growth mindset, I'm poised to make meaningful contributions and achieve greatness together in every project.",
+    "Full Stack Developer with 4.5 years of experience delivering production web applications end to end - interface, services and test coverage - across healthcare, e-commerce, event-management and water-management domains. I build frontends in React.js, Next.js, Vue.js and TypeScript, design REST APIs in Node.js and Spring Boot against PostgreSQL and MongoDB, and engineer test automation with Selenium WebDriver, TestNG and Playwright.",
   github: "https://github.com/Sagar8085/",
   resume:
-    "https://drive.google.com/drive/u/0/folders/1B9f7crGSOeT1dXD5TXW8VZ_wd8wGp12L",
+    `${process.env.PUBLIC_URL}/resume/Sagar%20Shrivastava%20SDE.pdf`,
   linkedin: "https://www.linkedin.com/in/shrivastava-sagar-80mht85/",
   twitter: "#",
   insta: "https://www.instagram.com/mohit.shrivastava229/",
@@ -26,6 +26,26 @@ export const skills = [
         image:
           "https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg",
       },
+      {
+        name: "TypeScript",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
+      },
+      {
+        name: "Next Js",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg",
+      },
+      {
+        name: "Vue Js",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg",
+      },
+      {
+        name: "Chart.js",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/chartjs/chartjs-original.svg",
+      },
 
       {
         name: "HTML",
@@ -34,7 +54,7 @@ export const skills = [
       {
         name: "CSS",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg",
       },
       {
         name: "SCSS",
@@ -44,7 +64,7 @@ export const skills = [
       {
         name: "JavaScript",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
       },
       {
         name: "Bootstrap",
@@ -62,36 +82,80 @@ export const skills = [
     title: "Backend",
     skills: [
       {
+        name: "Java",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
+      },
+      {
+        name: "Spring Boot",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg",
+      },
+      {
         name: "Node Js",
-        image: "https://nodejs.org/static/images/logo.svg",
-      },
-      {
-        name: "Express Js",
         image:
-          "data:image/png;base64,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",
+          "https://nodejs.org/static/images/logo.svg",
       },
       {
-        name: "Graph Ql",
-        image: "https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg",
-      },
-      {
-        name: "Python",
+        name: "REST APIs",
         image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
-      },
-      {
-        name: "MySQL",
-        image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/swagger/swagger-original.svg",
       },
       {
         name: "Postgresql",
-        image: "https://www.postgresql.org/media/img/about/press/elephant.png",
+        image:
+          "https://www.postgresql.org/media/img/about/press/elephant.png",
       },
       {
         name: "MongoDB",
         image:
           "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
+      },
+      {
+        name: "SQL",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/azuresqldatabase/azuresqldatabase-original.svg",
+      },
+    ],
+  },
+
+  {
+    title: "Testing / QA",
+    skills: [
+      {
+        name: "Selenium WebDriver",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/selenium/selenium-original.svg",
+      },
+      {
+        name: "Playwright",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/playwright/playwright-original.svg",
+      },
+      {
+        name: "TestNG",
+        image:
+          "https://ui-avatars.com/api/?name=TestNG&background=E44D26&color=fff&bold=true",
+      },
+      {
+        name: "Maven",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/maven/maven-original.svg",
+      },
+      {
+        name: "Postman",
+        image:
+          "data:image/png;base64,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",
+      },
+      {
+        name: "Page Object Model",
+        image:
+          "https://ui-avatars.com/api/?name=POM&background=854CE6&color=fff&bold=true",
+      },
+      {
+        name: "Regression / E2E",
+        image:
+          "https://ui-avatars.com/api/?name=E2E&background=2EA44F&color=fff&bold=true",
       },
     ],
   },
@@ -112,17 +176,32 @@ export const skills = [
       {
         name: "Netlify",
         image:
-          "https://seeklogo.com/images/N/netlify-logo-BD8F8A77E2-seeklogo.com.png",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/netlify/netlify-original.svg",
       },
       {
         name: "VS Code",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg",
       },
       {
-        name: "Postman",
+        name: "Docker",
         image:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAilBMVEXubT/////uazzuaTjtYy3tZjPuaTn++PftYiztXyb98e3tZTDtYSn//Pv+9vPtZjL4yr373NP86eT1sJzylXj51Mnxi2rvdEnvfFX62c/wgVz4xrf2t6PucELxj3H4zcHzoYf0p5D74dnveU/2tKH3v670po/75d/wf1rxhmTylHbzmn/2u6rtXB+PznumAAAPyUlEQVR4nNWdaZuyNhSGISEIBERBBXXcx3F8df7/32uCCwlLWEyAPh/aXr3ad7gnyVmSnBNN70qe541eIv/c2c/VVP8AJ5iuw/1tEUfQt1/yYbT6N/u5r6fBWPUHKCT0jrtwu9pgCyMITQA0VgCYECJs+afrNpwf1X2FKsJgHsYAGSgLlhdBRRhpi3CuaOIqIBwvbyfbQFVoPKeJDHsVLhXMWcmE3uV7gSzYiC7FRBZanC9yv0gu4fRwwshsRfeS6eM4lLos5RE6X5rRcvCyQ2loX46075JEOFov/pqtvArIv8V6JOfTpBAG+8j4bHLmZRrRPpDxcRIIlzMkcfhSAYRmywEQ7iIXKsB7CLrRrmfCSWypGL5UwIonPRIq55PB+AHh8mqo50sYjd9pD4TB3pZtPgWM9qy1XW1J6IVQnX0pEjQOLSPzdoTzyO+Uj8qP5p0ROlu3mwXIC7jbNrFcC8JJxxM0FYQtrGpjQmfWkQUtEjBmjYexKeGytwF8CIKmQU4zQi+0+xvAh4Dd0Kg2InQWuGc+Krxq5BubEM5BvzP0JRM2makNCO89mhhewAgVEHo3t28wRsa29mKsSzheob6pOKFVXbdRkzDYDGMJpoJazR25eoTLwSzBVADX2+KoRTj3hwdIEP1aoXgdwkkvgXa1gFsnTK1BODH6RimVUQOxmnBi980hkF2NWEk4aMA6iFWEA56iD1VO1ArC+ZACmWK5FRZVTLgcpJvgBXyxXxQSHvHwAWkcLsymRITjzf8BkCBuRIfjAkJvNbRYtExwJcg0BIS3IWQTACKEKo+W0a0NYWh1giASwPbpdggPt5VviOeT9d2csH8/AfFq8k4CdzMknFLlPqOMMFByrNtAAG/5eyfOQZTCAVRmUEsIvVV3B0vFXwzyscrlV4AIFyXWpoTw0PO2oRkVXBwaiQg1XLI7VUy46zncNk8FuzDjyNRE1+Ts4timkNCpvG+nVgAULKrxCRLya7lNBbBwc6qQcNazq3cLdnzHvwRQc8ZR+S8fzuoS9p0xwQL/PY4J4IYM7U7wcYWZVAGhI+V22gdy87NtHBHAKPn3i3IrXzhPCwi3Pc9RuC8ewQegPhWEInBbh7D3YMbNXS15TNHX+GiCKVYQ2uQIPcFS7kTglL2UmFjR6D0BQ0H4BqKc388Rht3fsuBlZmdaBlDfiaIRP+f3s4RB7zkh/OG/yGGm6D0mXt0RhiMw60qzhH27QjIKZ34EKaD2+OzRBq3IX4WfmLNTGcJp/7ujmCNk3ETy+yf+YCTeXMkGbxlCYWzbjfCaBeTX4ATbgT4S///mVUTYdzRDhe7p94zIFAWb1Mh8IzqGFbYwE9nwhHH/Q8gtpDvdSWHilBWMPT2ocNggLiec9L81w3uLiw80lNr/s4W/6FSt+BMsbhA5wiEMIRkDZtCWGGjuGzG06Rq7VZl7fhBZwt0QhpCsIzbymtpAe98t8RwasVRvclps9sUS9h2vPWUu2CGYklG02EBFlD49BTbFhMu+Q+6XbO6WxRKxE1XXTzXGwWV8IkPYczgDffwsC8sYQ5oupYjnOnEzm+2nhEGfm/jAQIfzZHK/uhSAWkwWkVmLQb0tJGb3NCU89EcIcPy2LveNljE2BNF/T9Tfevu4KHWqb8JRf3YGn3ZpVjc+QLodwQeXyxeiYKuNE4hGOcJ1XwEbNO4pXzB73EEGcM0h0ozA+g5+a5sKY50jFGzwqBSw2FqRnUviUNOks8m4cdn6FNOL7PW/MXU5L0LnTx2FQHDDOmd6swVH238ren0AGl/sdsa8oZn4czKEX73YGePKnk+TgBMYd4p1iel09MFtl3QkGDnLQ9O87h3OvghFG1iqRHDYibgzwPtexfPsC2IYxb+/kdaw+F1j4pon4bEHOwMBZzB3fxrw39FM8HLsgKrNH29MOULRDp0iYW6G0swNIGan9GPLBw8cYfd5k/vD2Uq6BiG7FfzzaQwJTh5DeOn6QBTYvL87GySw4fa6PybU8IUhrBXOSpSp8WHZl00A+Xvbn4dY6Jsh7NjdwxO/bftlZKYocX+fz6qn008Ix93aGX81zgEiHvAo48IZGr8Jl51uX+DMAeiXS9wED7iTcmXQ2L0JO/UV2TsTXxbrBxOd5YSQj33JhHDVoa+wzxnArJsgv3CDBqyf/yhwehF63R1WgOy97K+cm9BvmGYWNwnGzw6ehPPOQjaQLeXJu4nRiSwZ46DLMDXJVoHW5TI0c4A5KxpExNMbXzK8xTO/oIRdeUP2IPe9BnnAKfktAExs4FbGNyWbdpSwo8wJ5gCt7Brc2YAgTh8pvQQBLyHs6GAb/WYB3ewaJKuSGFFqHqQMIfmZx4RQypSv/mELPQOYC9UOFq2cpIHIUVIIQn2+1pGhwdkbFnkjsyUmHc+SlOcqyTJQU6NJmxFCZSO1R6jGTtFRTL3EYyN3LSuKpGeRhPCq3tAYOUArswaPxEsA/Ni3GUu7/AlWlHBc5zDnM7nZazzETZgRm0HNISCr8hnvyCuDoHcAtHTPR5nygAZzTe0xLQmg9dyYknmxDgeEcKo6dcq1ByBOwdywu72h+/ISRI5M025NCeFasbMoHEHO+e+pl/h9ZcVSL3/iNSG8q3UWxWuQAfRoOxG8fY3pt9Q0gLgLTcKmlkhWDtDi16DzS37D1vu23lSuVSBJsKbvVRLm16BLAJltmgsg3th6n/nKvoENb4RQpcOvXIO0WQNIz/p02aU65oIQKtzCyAGGmJ+id58CpscX0gsCSf6kKbz1DLOAh8wUPbBeQpdtZahA5GmeumUIYn5f9ECnKPOv/hEgdE2HVIXfgoRQVUgDTZLzjnlANgl2Foh6ifS/mKuo83BH2kjRRpsVEgIzvRKRADIFWwHNJSwmIneUVMbbygipm7giZlaS9JZeDn3p6BOraTC1rYqqyZQRJlbUo6N4Gr9HkDmumCBiRNkb3eNYjdNSRfh0E957olLA3xTwjkGmR9BCkcFTRJiGas+JmkzRdEn+WHTnja0SvaoKjtUQsrEoGRsz3mMWcDSjXiJms4uFsuhfCSEXyYxjmryza3C8IP4JcztvP+qScBWEKaA3XW9PyRkSSO9dOCey4iyusGWvMENVQPjIJjxnfTu5BjYfLiCNbub07JPPOPYqD4YIoeSYBt11Z/K99V3MRCjgXZy9TrwEdw/jR+nJly87LgXxbOVn3rgAmxMN4Kiloc0lAeDuYYRqj/ZoXCo3twBm9o8DePoozxrpN4O25jx2CEhzC9XXoZKN3xEt0Ir/4ayXSDahlP50kh8qPj18Hr44JCij+xWY717xo/pQKMnxlRYhvE+XnGQxZCrtVbqJh+BM9V4bWAbz8/220h4TxeSMjFI38RD8IYRKD9cibBkYwXdmhHedAlLnpX7Pm4q+y+VaiF4LfiF6nfSVTva8lZ5bAAB9w/qLtt/rizd3weMaApWybIJTcm4RKPpdAoQxjK77e/pu3JQeMSWj6HUDqPn07MlR03cO/oaTY7Y2ntah0bXoqUuXOIHTmJ4BK9kSZjN6RkngjdcdjSDJaZSd47MZPT+K9O2dzvqIPc/xFbgLdlcti9jlnfnnXYwaZacNBVeCVo1d3rjG84TwKHsMYVwO2JWNeeh5J8qTPG8EU1Q/dtrbHSS39nTZ5SSlRkZPSptk/qgqve8mSjU1uSuWjA4dF/y/75fKvCPM35PhNL52XZnzviMcyNtu4+/JcFrizqvhbe9JWKuIv5YEUzTs/nmFR11/QljZS6OmygGdRQ8NttDhTSipZsYs7cm89Pvo1/C4KCex7qm06fTo0M8rUUzdk5RICvglU/Ry6qcFHFu7pn9/PojZype3zrinhr3PtmiyakizxVkvBdfemmtxNaTep/4iWz/Y+wCmPWCelc6Hz2xdtvrsNYDbHrujZWq5px99SskavJt99vTJ1ON/VBmULVJ+6BL32t4OvMmef/+gL0bhFPUObr89z9FXhrB9b5NsDW+ieU8+MFWut0lrp18E6Gw7eM1arHx/mrY9hgDKrUHv2+69CWpRj6F2faIK1uDkNICnPIv6ROn7FrYm7yaC1SBe3ynq9dWmX1vOTTj/OnyOXKTCfm3Nj7uzU9Q5dL9RUazinnvN+yYaXIN/7w6G8PROIrbp+Qe9L/lutndtOO97lfW+bNi/lG0SOjqDQRiYp0r7lzba/MYThi8aEp+gB22TPsLMA+CTYfEJ+wg3GMT04ejL37D4hL2ga/fzJk7PfYVFXdxWaSRhP+96hfBAow1WXn1YuuuMUk/gVxcRLmscYdBQjdZkPX9X3sAI7amQsEa95SNUu9NRXDdcvF0o92BQ4/ctXqHamQzd48VhtWW2TZV70LLpGyXptuH674k4KFPjH7JADd+ZYTN6evuHrkVnQAuxzjszwpYGfLo0BYBaVG8Aj2K8VOetIHHJP2+nLsQxEkSl1eCNVO+9J0HFOAwvAXeCFkQmyaHOQ8ma6r7ZJYhsIMaGATe/q/3P/byeL4PLCWiDGUFm+6mCsCrbBwBAiHxC63Z/OC9Q/bfz+n9brpUAKDyiLX7Dsk7wNjjZBa8mlhLS5gf/N+FDMUrZW7Kq6nKVySx7uXqw7wE3FMi9t1ZFOLi0r0JG8SIUEer3oTw7U0e5Pjh1CIfxtno9oYJorQaht/q/WBtYZmUqCPWxmloT6QJa+aVdMaEeDCooK1PxRYl6hMkLNkPX+02MVoT9P51brYKktwnhIN58FKrwpeomhMnrNgNWtj94C8JhI1YD1iAc8kStnKL1CPWJO0yLCtwagLUI9fkgnQbwK6xoA8LkOdChie8z9SmhfhzQjtpDcCOMZBoT6s5qWJkGEhVxtiLUvT5vNOdk3QTZREvCXiqXSgTc7+rPbUGo7xq8P6hSENUyoi0I6cXDvuk02uOmbNPpc0Ld66mCiRGww9pLsAUhmamg51eDYT0v2J5Qd2Y9GhxgzEQbFnIISZgK+xpGCOsEop8T6s62l1AcuNvGA9iSkITiUfflFH7UxEd8SkiMqtHtVIWwoQn9lJC+vtyh4zDtfSMfKIVQ16e/HVlVYFybugg5hMSqxh1U/wArbmFBJRF2wPgp38eEJMiJXHU2x3Q3peeCnRHq+nKGlBwYA+T/K6kP75iQ2NV9ZMhOrEwjam8/WUkh1PXRevEncSAB+lusyxv5NJIkQiLnq8UL6IV40NiEbeKzYskjJDqGMfY/m64mwqeDhNWXSioh0eW8QFbLoSSDhxbfl5bRWZlkExKNl+HKJhO2ESZAhn3a7+puETaQAkIqbx7GGsLIrOQEwETk1xGHcymWMy9FhImO83B7PfkWRhBmUQkYhAhbeLPahruj5JnJSiVhonEwXd9/Zos4gr79kgujeHHbh+tpIM9olkg54Vue543e8hQOWkb/AfyY32AuZqP9AAAAAElFTkSuQmCC",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg",
+      },
+      {
+        name: "Azure DevOps",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/azuredevops/azuredevops-original.svg",
+      },
+      {
+        name: "JIRA",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/jira/jira-original.svg",
+      },
+      {
+        name: "AWS S3",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg",
       },
 
       {
@@ -137,54 +216,39 @@ export const skills = [
 export const experiences = [
   {
     id: 0,
-    img: "https://eighty5technologies.com/assets/images/logo/logo.svg",
-    role: "MERN Stack developer ",
-    company: "EIGHTYFIVE TECHNOLOGIES PVT LTD",
-    date: "November 2023 - Present",
+    img: "https://ui-avatars.com/api/?name=Testflo&background=854CE6&color=fff&bold=true&size=128",
+    role: "Full Stack Developer",
+    company: "Testflo - Noida, India (Remote)",
+    date: "May 2022 - Present",
     desc: [
-      "Working on the frontend of the web application using ReactJS, Redux, and Material UI.",
-    ],
-    skills: [
-      " ReactJs",
-      "AWS S3 bucket",
-      "JavaScript",
-      "TypeScript",
-      "Node Js",
-      "bootsrap",
-    ],
-    doc: "https://github.com/Sagar8085/portfolio-image/blob/main/OfferLetter_Sagar_eighty5technologies.jpg?raw=true",
-  },
-  {
-    id: 1,
-    img: "https://github.com/Sagar8085/portfolio-image/blob/main/techvalens.jpeg?raw=true",
-    role: "Software Developer",
-    company: "Techvalens Web and Mobile Software Solutions.",
-    date: "May 2022 - Nov 2023",
-    desc: [
-      "Worked on React.js and its core principles.",
-      "Worked with newerspecifications of EcmaScript.",
-      "Experienced on HTML, CSS, and Bootstrap in designing and creating UI also had work on Google-developed MaterialUI-Design.",
-      "Experienced in all project phases using Waterfall and Agile Methodologies.",
-      "Ability to understand business requirements and translate them into technicalrequirements.",
-      "Ability to work well in both team and individual environments",
-      "Internship at Techvalens Web and Mobile Software Solutions Software for a period of 3 months.",
+      "Delivered end-to-end features across four client products in the healthcare, e-commerce, event-management and water-management sectors, owning work from requirement analysis through release.",
+      "Built frontends in React.js, Next.js and Vue.js with reusable component architectures, Redux state management and interactive Chart.js dashboards.",
+      "Designed and implemented REST APIs and backend services in Node.js and Spring Boot against PostgreSQL and MongoDB.",
+      "Integrated Stripe payments, AWS S3 pre-signed URL uploads, WebSocket and Firebase Cloud Messaging notifications.",
+      "Automated end-to-end regression suites in Java with Selenium WebDriver, TestNG and Maven on a Page Object Model framework, backed by Postman API validation.",
+      "Contributed to sprint planning, backlog refinement, daily stand-ups, retrospectives and peer code reviews in Agile/Scrum teams using Azure DevOps.",
     ],
     skills: [
       "ReactJS",
+      "Next.js",
+      "Vue.js",
       "Redux",
-      "NodeJs",
-      "Material UI",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "TypeScript",
-      "SCSS",
-      "S3 Bucket",
+      "Node.js",
+      "Spring Boot",
+      "Java",
+      "Selenium",
+      "TestNG",
+      "Playwright",
+      "Postman",
+      "PostgreSQL",
+      "MongoDB",
+      "AWS S3",
+      "Stripe",
     ],
     doc: "",
   },
   {
-    id: 2,
+    id: 1,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpCTW0AcvZWKpoDjxhKvAw_qWNIcS6470KpvXeTt7iBQ&s",
     role: "Fullstack Externship",
     company: "Universal Informatics",
@@ -202,7 +266,7 @@ export const experiences = [
       "MongoDB",
       "HTML",
       "CSS",
-      "Bootsrap",
+      "Bootstrap",
     ],
     doc: "https://github.com/Sagar8085/portfolio-image/blob/main/internship%20certificate_page-0001.jpg?raw=true",
   },
@@ -229,7 +293,7 @@ export const education = [
   },
   {
     id: 2,
-    img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Board_of_Secondary_Education%2C_Madhya_Pradesh_logo.jpg/175px-Board_of_Secondary_Education%2C_Madhya_Pradesh_logo.jpg",
+    img: "https://ui-avatars.com/api/?name=MP+Board&background=854CE6&color=fff&bold=true&size=128",
     school: "Bhagini Nivedita Higher Secondary School, Gwalior",
     date: "Apr 2015 - Apr 2016",
     grade: "",
@@ -238,7 +302,7 @@ export const education = [
   },
   {
     id: 3,
-    img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Board_of_Secondary_Education%2C_Madhya_Pradesh_logo.jpg/175px-Board_of_Secondary_Education%2C_Madhya_Pradesh_logo.jpg",
+    img: "https://ui-avatars.com/api/?name=MP+Board&background=854CE6&color=fff&bold=true&size=128",
     school: "Shri Gauri Shankar Higher Secondary School",
     date: "Apr 2012 - Apr 2013",
     grade: "",
@@ -250,19 +314,111 @@ export const education = [
 export const projects = [
   {
     id: 0,
-    title: "imetatech",
-    date: "Jun 2021",
+    title: "LIMS - Laboratory Information Management System",
+    date: "",
     description:
-      " A Todo Web App made with php, Bootsrap. It has a login page where users can log in with their Google account. It has a sidebar where users can see all the tasks and can create a new task. It has a calendar where users can see all the tasks on a particular date. It has a search bar where users can search for a particular task.",
-    Environment: "Windows 10 Laptop",
-    roles_and_responsibilities: [""],
+      "Healthcare laboratory information management system built on Java and Spring Boot, managing laboratory samples, orders and reports. Contributed backend services and end-to-end test automation.",
+    roles_and_responsibilities: [
+      "Developed Spring Boot REST APIs in Java for laboratory sample registration, test orders and result reporting.",
+      "Implemented service and repository layers with validation and exception handling against the SQL database.",
+      "Automated end-to-end laboratory sample, order and reporting workflows through a Page Object Model framework written in Java with Selenium WebDriver and TestNG.",
+      "Validated REST API contracts in Postman and confirmed data integrity with SQL queries run against transactional tables.",
+      "Configured Maven-driven execution so the suite ran repeatably across QA and staging environments, replacing manual regression cycles.",
+    ],
+    Environment:
+      "Java, Spring Boot, REST APIs, Selenium WebDriver, TestNG, Maven, Page Object Model, Postman, SQL, Azure DevOps.",
     image:
-      "https://github.com/Sagar8085/portfolio-image/blob/main/imeta.PNG?raw=true",
-    tags: ["php", "Local Storage", "Bootsrap"],
+      "https://placehold.co/800x450/1C1E27/854CE6/png?text=LIMS+Test+Automation&font=montserrat",
+    tags: ["Java", "Spring Boot", "Selenium", "TestNG", "Maven", "POM", "Postman", "SQL"],
     category: "web app",
+    github: "#",
+    webapp: "#",
   },
   {
     id: 1,
+    title: "Encora - Verified Returns Website",
+    date: "",
+    description:
+      "Marketing website for Encora's verified return infrastructure: a self-service return kiosk that scans, verifies and routes retail returns for apparel retailers, mall operators and logistics partners, built on reusable-container pilots.",
+    roles_and_responsibilities: [
+      "Developed the responsive frontend in Next.js and React.js, including the hero, 'How It Works' (Scan, Place, Verify, Route), solutions and retailer value-proposition sections.",
+      "Built reusable layout and UI components shared across Home, The Bin, Solutions, Encora Reuse, Docs, About and Contact pages.",
+      "Implemented light/dark theme switching and a responsive navigation menu for desktop, tablet and mobile.",
+      "Added a floating contact widget with quick 'Talk to us' and spec-sheet download actions.",
+      "Optimized images with Next.js image optimization to improve page load performance and SEO.",
+    ],
+    Environment:
+      "Next.js, React.js, JavaScript (ES6), HTML5, CSS3, Responsive Design.",
+    image: "/encora-web.png",
+    tags: ["Next Js", "React Js", "JavaScript", "HTML5", "CSS3", "Responsive UI"],
+    category: "web app",
+    github: "#",
+    webapp: "https://www.encora.co/",
+  },
+  {
+    id: 2,
+    title: "SafeWaters",
+    date: "",
+    description:
+      "A centralized water management & monitoring dashboard enabling organizations to monitor water quality, track consumption, manage resources and generate analytical reports.",
+    roles_and_responsibilities: [
+      "Built a centralized Vue.js dashboard enabling organizations to monitor water quality, track consumption, manage resources and generate analytical reports.",
+      "Structured a modular component architecture with shared UI primitives, improving long-term maintainability of the codebase.",
+      "Connected live REST API streams carrying water-quality metrics, consumption figures and operational insights.",
+      "Visualized key performance indicators and trend analyses through interactive Chart.js reporting modules.",
+      "Improved rendering speed and load performance, tightening responsiveness across browsers and devices.",
+    ],
+    Environment:
+      "Vue.js, JavaScript (ES6), Chart.js, REST APIs, HTML5, CSS3, Git, Agile/Scrum.",
+    image:
+      "https://raw.githubusercontent.com/Sagar8085/portfolio-image/refs/heads/main/safewaters.png",
+    tags: ["Vue Js", "Chart.js", "REST APIs", "JavaScript", "HTML5", "CSS3"],
+    category: "web app",
+    github: "#",
+    webapp: "https://www.safewaters.com/",
+  },
+  {
+    id: 3,
+    title: "Heba Pilates",
+    date: "Oct 2022 - Present",
+    description:
+      "Heba teaches the small, local muscles we call stabilisers to prepare the body for movement before the larger global muscles come into play. This helps avoid the tightness often caused by your muscles struggling to create stability in an unstable system.",
+    roles_and_responsibilities: [
+      "Developing new user-facing features using Vue.js.",
+      "Building reusable components and front-end libraries for future use.",
+      "Translating designs and wireframes into high quality code.",
+      "Optimizing components for maximum performance across a vast array of web-capable devices and browsers.",
+      "Involved in Web Notification integration.",
+      "Involved in uploading and downloading functionality on S3 bucket using pre-signed URL.",
+      "Built the Care Manager module, letting care managers manage client profiles, track health notes and session progress, and schedule and follow up on Pilates sessions.",
+      "Implemented role-based access in the Care Manager dashboard so care managers, instructors and admins see only the data and actions relevant to them.",
+      "Automated end-to-end QA coverage with Playwright in TypeScript on a Page Object Model framework, covering login, booking, Care Manager and client workflows.",
+      "Ran regression, cross-browser (Chromium, Firefox, WebKit) and responsive testing with Playwright, and validated REST APIs with Postman.",
+      "Logged and tracked defects in JIRA and verified fixes before each release.",
+    ],
+    Environment:
+      "Vuejs, ES-6, HTML5, CSS3, JSON, REST Web services, Linux (Ubuntu 16.04), websocket, Playwright, TypeScript, Postman.",
+    image:
+      "https://github.com/Sagar8085/portfolio-image/blob/main/heba%20pilates.PNG?raw=true",
+    tags: ["VueJs", "S3 bucket", "vuex", "Bootstrap", "Playwright", "Care Manager", "QA Automation"],
+    category: "web app",
+    github: "#",
+    webapp: "https://www.hebapilates.com/",
+  },
+  {
+    id: 4,
+    title: "imetatech",
+    date: "Jun 2021",
+    description:
+      "A Todo Web App made with PHP and Bootstrap. It has a login page where users can log in with their Google account. It has a sidebar where users can see all the tasks and can create a new task. It has a calendar where users can see all the tasks on a particular date. It has a search bar where users can search for a particular task.",
+    Environment: "PHP, Bootstrap, Local Storage, HTML5, CSS3.",
+    image:
+      "https://github.com/Sagar8085/portfolio-image/blob/main/imeta.PNG?raw=true",
+    tags: ["php", "Local Storage", "Bootstrap"],
+    category: "web app",
+  },
+  {
+    id: 5,
     title: "Waterfront concerts",
     date: "Apr 2023 - May 2023",
     description:
@@ -289,7 +445,7 @@ export const projects = [
       "S3 bucket",
       "Express Js",
       "Redux",
-      "Bootrap",
+      "Bootstrap",
       "SCSS",
     ],
     category: "web app",
@@ -297,32 +453,8 @@ export const projects = [
     webapp: "https://www.waterfrontconcerts.com/",
   },
   {
-    id: 2,
-    title: "Heba Pilates",
-    date: "Oct 2022 - Present",
-    description:
-      "Heba teaches the small, local muscles we call stabilisers to prepare the body for movement before the larger global muscles come into play. This helps avoid the tightness often caused by your muscles struggling to create stability in an unstable system.",
-    roles_and_responsibilities: [
-      "Developing new user-facing features using Vue.js.",
-      "Building reusable components and front-end libraries for future use.",
-      "Translating designs and wireframes into high quality code.",
-      "Optimizing components for maximum performance across a vast array of web-capable devices and browsers.",
-      "Involved in Web Notification integration.",
-      "Involved in uploading and downloading functionality on S3 bucket using pre-signed URL.",
-    ],
-    Environment:
-      "Vuejs, ES-6, HTML5, CSS3, JSON, REST Web services, Linux (Ubuntu 16.04), websocket.",
-    image:
-      "https://github.com/Sagar8085/portfolio-image/blob/main/heba%20pilates.PNG?raw=true",
-    tags: ["VueJs", "S3 bucket", "vuex", "Bootsrap"],
-    category: "web app",
-    github: "#",
-    webapp: "https://www.hebapilates.com/",
-  },
-
-  {
-    id: 3,
-    title: "Encora (admin ,vendor and User) ",
+    id: 6,
+    title: "Encora (Admin, Vendor and User)",
     date: "Jul 2021",
     description:
       "Encora  offers the most sustainable eco-conscious way to enjoy takeout food from your favorite food joints and stop the abuse of single-use",
@@ -340,7 +472,7 @@ export const projects = [
 
     image:
       "https://raw.githubusercontent.com/Sagar8085/portfolio-image/main/encora.PNG",
-    tags: ["React Js", "Bootsrap", "SCSS"],
+    tags: ["React Js", "Bootstrap", "SCSS"],
     category: "web app",
     github: "#",
     webapp: "https://encora.co/",

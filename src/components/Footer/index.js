@@ -95,15 +95,16 @@ function Footer() {
           <NavLink href="#experience">Experience</NavLink>
           <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#education">Education</NavLink>
+          <NavLink href="#contact">Contact</NavLink>
         </Nav>
         <SocialMediaIcons>
-          <SocialMediaIcon href={Bio.facebook} target="display"><FacebookIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.twitter} target="display"><TwitterIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.linkedin} target="display"><LinkedInIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.insta} target="display"><InstagramIcon /></SocialMediaIcon>
+          {Bio.facebook && Bio.facebook !== "#" && <SocialMediaIcon href={Bio.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FacebookIcon /></SocialMediaIcon>}
+          {Bio.twitter && Bio.twitter !== "#" && <SocialMediaIcon href={Bio.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter"><TwitterIcon /></SocialMediaIcon>}
+          {Bio.linkedin && Bio.linkedin !== "#" && <SocialMediaIcon href={Bio.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><LinkedInIcon /></SocialMediaIcon>}
+          {Bio.insta && Bio.insta !== "#" && <SocialMediaIcon href={Bio.insta} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><InstagramIcon /></SocialMediaIcon>}
         </SocialMediaIcons>
         <Copyright>
-          &copy; 2024 Sagar Shrivastava. All rights reserved.
+          &copy; {new Date().getFullYear()} Sagar Shrivastava. All rights reserved.
         </Copyright>
 
       </FooterWrapper>
