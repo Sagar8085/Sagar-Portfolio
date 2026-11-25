@@ -1,106 +1,135 @@
+import React from "react";
+import styled from "styled-components";
+import { experiences } from "../../data/constants";
+import { Container, Section, SectionHead, Eyebrow, Heading, Lead } from "../ui";
+import { ArrowRightIcon } from "../ui/Icons";
 
-import React from 'react'
-import styled from 'styled-components'
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import ExperienceCard from '../Cards/ExperienceCard';
-import { experiences } from '../../data/constants';
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    align-items: center;
-    padding: 40px 0px 80px 0px;
-    @media (max-width: 960px) {
-        padding: 0px;
-    }
+const Band = styled(Section)`
+  background: ${({ theme }) => theme.dark};
+  color: ${({ theme }) => theme.darkText};
 `;
 
-const Wrapper = styled.div`
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1350px;
-    padding: 80px 0;
-    gap: 12px;
-    @media (max-width: 960px) {
-        flex-direction: column;
-    }
+const Roles = styled.ol`
+  list-style: none;
+  border-bottom: 1px solid ${({ theme }) => theme.darkLine};
 `;
 
-const Title = styled.div`
-font-size: 42px;
-text-align: center;
-font-weight: 600;
-margin-top: 20px;
-  color: ${({ theme }) => theme.text_primary};
-  @media (max-width: 768px) {
-      margin-top: 12px;
-      font-size: 32px;
+const Role = styled.li`
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+  gap: 40px;
+  padding: 40px 0;
+  border-top: 1px solid ${({ theme }) => theme.darkLine};
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 32px 0;
   }
 `;
 
-const Desc = styled.div`
-    font-size: 18px;
-    text-align: center;
-    max-width: 600px;
-    color: ${({ theme }) => theme.text_secondary};
-    @media (max-width: 768px) {
-        margin-top: 12px;
-        font-size: 16px;
-    }
+const Dates = styled.p`
+  font-family: ${({ theme }) => theme.fontMono};
+  font-size: 12px;
+  color: ${({ theme }) => theme.darkMuted};
 `;
 
-const TimelineSection = styled.div`
-    width: 100%;
-    max-width: 1000px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+const Title = styled.h3`
+  margin-top: 10px;
+  font-family: ${({ theme }) => theme.fontHead};
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.2;
+  color: ${({ theme }) => theme.darkText};
 `;
 
+const Company = styled.p`
+  margin-top: 6px;
+  font-size: 15px;
+  color: ${({ theme }) => theme.darkBody};
+`;
 
+const Bullets = styled.ul`
+  list-style: none;
+  display: grid;
+  gap: 14px;
+`;
 
-const index = () => {
-    return (
-        <Container id="experience">
-            <Wrapper>
-                <Title>Experience</Title>
-                <Desc>
-                    My work experience as a software engineer and working on different companies and projects.
-                </Desc>
-                <TimelineSection>
-                    <Timeline>
-                        {experiences.map((experience,index) => (
-                            <TimelineItem key={experience.id}>
-                                <TimelineSeparator>
-                                    <TimelineDot variant="outlined" color="secondary" />
-                                    {index !== experiences.length - 1 && <TimelineConnector style={{ background: '#854CE6' }} />}
-                                </TimelineSeparator>
-                                <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                    <ExperienceCard experience={experience}/>
-                                </TimelineContent>
-                            </TimelineItem>
-                        ))}
-                    </Timeline>
+const Bullet = styled.li`
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: ${({ theme }) => theme.darkBody};
+  svg {
+    margin-top: 4px;
+    color: ${({ theme }) => theme.darkAccent};
+  }
+`;
 
-                </TimelineSection>
-            </Wrapper>
-        </Container>
-    )
-}
+const Tags = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+`;
 
-export default index
+const Tag = styled.li`
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: ${({ theme }) => theme.radiusChip};
+  font-size: 12px;
+  color: #e6e8ec;
+`;
+
+const Experience = () => (
+  <Band id="experience" aria-labelledby="experience-heading">
+    <Container>
+      <SectionHead>
+        <div>
+          <Eyebrow $onDark>02 / Experience</Eyebrow>
+          <Heading id="experience-heading" $onDark>
+            Where I&rsquo;ve built
+          </Heading>
+        </div>
+        <Lead $onDark>
+          My work experience as a software engineer and working on different companies and
+          projects.
+        </Lead>
+      </SectionHead>
+      <Roles>
+        {experiences.map((exp) => (
+          <Role key={exp.id}>
+            <div>
+              <Dates>{exp.date}</Dates>
+              <Title>{exp.role}</Title>
+              <Company>{exp.company}</Company>
+            </div>
+            <div>
+              {exp.desc?.length > 0 && (
+                <Bullets>
+                  {exp.desc.map((item, index) => (
+                    <Bullet key={index}>
+                      <ArrowRightIcon size={14} />
+                      <span>{item}</span>
+                    </Bullet>
+                  ))}
+                </Bullets>
+              )}
+              {exp.skills?.length > 0 && (
+                <Tags aria-label="Skills used">
+                  {exp.skills.map((skill, index) => (
+                    <Tag key={index}>{skill.trim()}</Tag>
+                  ))}
+                </Tags>
+              )}
+            </div>
+          </Role>
+        ))}
+      </Roles>
+    </Container>
+  </Band>
+);
+
+export default Experience;

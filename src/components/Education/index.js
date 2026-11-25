@@ -1,109 +1,91 @@
+import React from "react";
+import styled from "styled-components";
+import { education } from "../../data/constants";
+import { Container, Section, SectionHead, Eyebrow, Heading, Lead } from "../ui";
 
-import React from 'react'
-import styled from 'styled-components'
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import { education } from '../../data/constants';
-import EducationCard from '../Cards/EducationCard';
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    align-items: center;
-    padding: 0px 0px 60px 0px;
-    @media (max-width: 960px) {
-        padding: 0px;
-    }
-`;
-
-const Wrapper = styled.div`
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1350px;
-    padding: 40px 0px 0px 0px;
-    gap: 12px;
-    @media (max-width: 960px) {
-        flex-direction: column;
-    }
-`;
-
-const Title = styled.div`
-font-size: 42px;
-text-align: center;
-font-weight: 600;
-margin-top: 20px;
-  color: ${({ theme }) => theme.text_primary};
-  @media (max-width: 768px) {
-      margin-top: 12px;
-      font-size: 32px;
+const Card = styled.ol`
+  list-style: none;
+  padding: 8px 32px;
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.radiusCard};
+  @media (max-width: 640px) {
+    padding: 4px 20px;
   }
 `;
 
-const Desc = styled.div`
-    font-size: 18px;
-    text-align: center;
-    max-width: 600px;
-    color: ${({ theme }) => theme.text_secondary};
-    @media (max-width: 768px) {
-        margin-top: 12px;
-        font-size: 16px;
-    }
+const Row = styled.li`
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid ${({ theme }) => theme.border};
+  &:first-child {
+    border-top: none;
+  }
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 22px 0;
+  }
 `;
 
-const TimelineSection = styled.div`
-    width: 100%;
-    max-width: 1000px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    @media (max-width: 660px) {
-        align-items: end;
-    }
+const Dates = styled.p`
+  padding-top: 4px;
+  font-family: ${({ theme }) => theme.fontMono};
+  font-size: 12px;
+  color: ${({ theme }) => theme.muted};
 `;
 
+const Degree = styled.h3`
+  font-family: ${({ theme }) => theme.fontHead};
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.3;
+  color: ${({ theme }) => theme.text};
+`;
 
+const School = styled.p`
+  margin-top: 6px;
+  font-size: 15px;
+  color: ${({ theme }) => theme.text};
+`;
 
-const index = () => {
-    return (
-        <Container id="education">
-            <Wrapper>
-                <Title>Education</Title>
-                <Desc>
-                    My education has been a journey of self-discovery and growth. My educational details are as follows.
-                </Desc>
-                <TimelineSection>
-                    <Timeline>
-                        {education.map((education,index) => (
-                            <TimelineItem key={education.id}>
-                                <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                    <EducationCard education={education}/>
-                                </TimelineContent>
-                                <TimelineSeparator>
-                                    <TimelineDot variant="outlined" color="secondary" />
-                                    {index !== education.length - 1 && <TimelineConnector style={{ background: '#854CE6' }} />}
-                                </TimelineSeparator>
-                            </TimelineItem>
-                        ))}
-                    </Timeline>
+const Note = styled.p`
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: ${({ theme }) => theme.muted};
+`;
 
-                </TimelineSection>
-            </Wrapper>
-        </Container>
-    )
-}
+const Education = () => (
+  <Section id="education" aria-labelledby="education-heading" style={{ paddingTop: 0 }}>
+    <Container>
+      <SectionHead>
+        <div>
+          <Eyebrow>04 / Education</Eyebrow>
+          <Heading id="education-heading">Learning path</Heading>
+        </div>
+        <Lead>
+          My education has been a journey of self-discovery and growth. My educational details
+          are as follows.
+        </Lead>
+      </SectionHead>
+      <Card>
+        {education.map((item) => (
+          <Row key={item.id}>
+            <Dates>{item.date}</Dates>
+            <div>
+              <Degree>{item.degree.trim()}</Degree>
+              <School>{item.school}</School>
+              {item.grade && <Note>Grade: {item.grade}</Note>}
+              {item.desc && <Note>{item.desc}</Note>}
+            </div>
+          </Row>
+        ))}
+      </Card>
+    </Container>
+  </Section>
+);
 
-export default index
+export default Education;

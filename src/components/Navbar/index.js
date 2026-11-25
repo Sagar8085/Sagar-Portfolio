@@ -1,64 +1,136 @@
-import React from 'react'
-import { Nav, NavLink, NavbarContainer, Span, NavLogo, NavItems, GitHubButton, ButtonContainer, MobileIcon, MobileMenu, MobileLink } from './NavbarStyledComponent'
-import { DiCssdeck } from 'react-icons/di';
-import { FaBars } from 'react-icons/fa';
-import { Bio } from '../../data/constants';
-import { useTheme } from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import { Bio } from "../../data/constants";
+import { Container } from "../ui";
+import { GithubIcon } from "../ui/Icons";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const theme = useTheme()
-  return (
-    <Nav>
-      <NavbarContainer>
-        <NavLogo to='/'>
-          <span style={{ display: "flex", alignItems: "center", color: "white", cursor: "pointer" }}>
-            <DiCssdeck size="3rem" /> <Span>Portfolio</Span>
-          </span>
-        </NavLogo>
-        <MobileIcon>
-          <FaBars onClick={() => {
-            setIsOpen(!isOpen)
-          }} />
-        </MobileIcon>
-        <NavItems>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href='#skills'>Skills</NavLink>
-          <NavLink href='#experience'>Experience</NavLink>
-          <NavLink href='#projects'>Projects</NavLink>
-          <NavLink href='#education'>Education</NavLink>
-          <NavLink href='#contact'>Contact</NavLink>
-        </NavItems>
-        <ButtonContainer>
-          <GitHubButton href={Bio.github} target="_blank" rel="noopener noreferrer">Github Profile</GitHubButton>
-        </ButtonContainer>
-        {
-          isOpen &&
-          <MobileMenu isOpen={isOpen}>
-            <MobileLink href="#about" onClick={() => {
-              setIsOpen(!isOpen)
-            }}>About</MobileLink>
-            <MobileLink href='#skills' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Skills</MobileLink>
-            <MobileLink href='#experience' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Experience</MobileLink>
-            <MobileLink href='#projects' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Projects</MobileLink>
-            <MobileLink href='#education' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Education</MobileLink>
-            <MobileLink href='#contact' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Contact</MobileLink>
-            <GitHubButton style={{padding: '10px 16px',background: `${theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank" rel="noopener noreferrer">Github Profile</GitHubButton>
-          </MobileMenu>
-        }
-      </NavbarContainer>
-    </Nav>
-  )
-}
+const NAV_LINKS = [
+  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#education", label: "Education" },
+  { href: "#contact", label: "Contact" },
+];
 
-export default Navbar
+const Header = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(244, 245, 247, 0.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid ${({ theme }) => theme.border};
+`;
+
+const Bar = styled(Container)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 72px;
+  @media (max-width: 760px) {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+`;
+
+const Brand = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: ${({ theme }) => theme.fontHead};
+  font-weight: 600;
+  font-size: 16px;
+  color: ${({ theme }) => theme.text};
+`;
+
+const Monogram = styled.span`
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: ${({ theme }) => theme.dark};
+  color: #ffffff;
+  font-family: ${({ theme }) => theme.fontHead};
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+`;
+
+const Links = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+  list-style: none;
+  @media (max-width: 760px) {
+    order: 3;
+    width: 100%;
+    gap: 4px 20px;
+  }
+`;
+
+const NavLink = styled.a`
+  display: inline-block;
+  padding: 6px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.text};
+  text-decoration: none;
+  &:hover {
+    color: ${({ theme }) => theme.accent};
+  }
+`;
+
+const GithubButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid ${({ theme }) => theme.text};
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.text};
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  &:hover {
+    background: ${({ theme }) => theme.text};
+    color: #ffffff;
+  }
+`;
+
+const initials = (name) =>
+  name
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+
+const Navbar = () => (
+  <Header>
+    <Bar as="nav" aria-label="Primary">
+      <Brand href="#about">
+        <Monogram aria-hidden="true">{initials(Bio.name)}</Monogram>
+        {Bio.name}
+      </Brand>
+      <Links>
+        {NAV_LINKS.map((link) => (
+          <li key={link.href}>
+            <NavLink href={link.href}>{link.label}</NavLink>
+          </li>
+        ))}
+      </Links>
+      <GithubButton href={Bio.github} target="_blank" rel="noopener noreferrer">
+        <GithubIcon size={16} />
+        GitHub
+      </GithubButton>
+    </Bar>
+  </Header>
+);
+
+export default Navbar;

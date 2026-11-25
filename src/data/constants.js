@@ -10,6 +10,9 @@ export const Bio = {
   twitter: "#",
   insta: "https://www.instagram.com/mohit.shrivastava229/",
   facebook: "https://www.facebook.com/mohit.shrivastava.9277",
+  email: "sagar.shrivastava8085@gmail.com",
+  stats: { years: "4.5", domains: 4 },
+  stack: ["React", "Next.js", "Vue", "Node", "Spring Boot", "Playwright"],
 };
 
 export const skills = [
@@ -315,6 +318,7 @@ export const projects = [
   {
     id: 0,
     title: "LIMS - Laboratory Information Management System",
+    initials: "LIMS",
     date: "",
     description:
       "Healthcare laboratory information management system built on Java and Spring Boot, managing laboratory samples, orders and reports. Contributed backend services and end-to-end test automation.",
@@ -330,13 +334,14 @@ export const projects = [
     image:
       "https://placehold.co/800x450/1C1E27/854CE6/png?text=LIMS+Test+Automation&font=montserrat",
     tags: ["Java", "Spring Boot", "Selenium", "TestNG", "Maven", "POM", "Postman", "SQL"],
-    category: "web app",
+    category: "qa automation",
     github: "#",
     webapp: "#",
   },
   {
     id: 1,
     title: "Encora - Verified Returns Website",
+    initials: "ENC",
     date: "",
     description:
       "Marketing website for Encora's verified return infrastructure: a self-service return kiosk that scans, verifies and routes retail returns for apparel retailers, mall operators and logistics partners, built on reusable-container pilots.",
@@ -358,6 +363,7 @@ export const projects = [
   {
     id: 2,
     title: "SafeWaters",
+    initials: "SW",
     date: "",
     description:
       "A centralized water management & monitoring dashboard enabling organizations to monitor water quality, track consumption, manage resources and generate analytical reports.",
@@ -380,6 +386,7 @@ export const projects = [
   {
     id: 3,
     title: "Heba Pilates",
+    initials: "HP",
     date: "Oct 2022 - Present",
     description:
       "Heba teaches the small, local muscles we call stabilisers to prepare the body for movement before the larger global muscles come into play. This helps avoid the tightness often caused by your muscles struggling to create stability in an unstable system.",
@@ -408,6 +415,7 @@ export const projects = [
   {
     id: 4,
     title: "imetatech",
+    initials: "IMT",
     date: "Jun 2021",
     description:
       "A Todo Web App made with PHP and Bootstrap. It has a login page where users can log in with their Google account. It has a sidebar where users can see all the tasks and can create a new task. It has a calendar where users can see all the tasks on a particular date. It has a search bar where users can search for a particular task.",
@@ -420,6 +428,7 @@ export const projects = [
   {
     id: 5,
     title: "Waterfront concerts",
+    initials: "WFC",
     date: "Apr 2023 - May 2023",
     description:
       "Based on the live event phenomenon, admin can create a public/private event as per their own and users can join it.",
@@ -455,6 +464,7 @@ export const projects = [
   {
     id: 6,
     title: "Encora (Admin, Vendor and User)",
+    initials: "ENC",
     date: "Jul 2021",
     description:
       "Encora  offers the most sustainable eco-conscious way to enjoy takeout food from your favorite food joints and stop the abuse of single-use",

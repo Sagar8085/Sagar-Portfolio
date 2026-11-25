@@ -1,170 +1,116 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useRef } from 'react';
-import emailjs from '@emailjs/browser';
-import { Snackbar } from '@mui/material';
+import React from "react";
+import styled from "styled-components";
+import { Bio } from "../../data/constants";
+import { Container, Eyebrow } from "../ui";
+import { ArrowUpRightIcon } from "../ui/Icons";
 
-const Container = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-position: relative;
-z-index: 1;
-align-items: center;
-@media (max-width: 960px) {
-    padding: 0px;
-}
-`
-
-const Wrapper = styled.div`
-position: relative;
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-direction: column;
-width: 100%;
-max-width: 1350px;
-padding: 0px 0px 80px 0px;
-gap: 12px;
-@media (max-width: 960px) {
-    flex-direction: column;
-}
-`
-
-const Title = styled.div`
-font-size: 42px;
-text-align: center;
-font-weight: 600;
-margin-top: 20px;
-  color: ${({ theme }) => theme.text_primary};
-  @media (max-width: 768px) {
-      margin-top: 12px;
-      font-size: 32px;
+const Wrapper = styled.section`
+  padding: 0 0 112px;
+  @media (max-width: 640px) {
+    padding-bottom: 72px;
   }
 `;
 
-const Desc = styled.div`
-    font-size: 18px;
-    text-align: center;
-    max-width: 600px;
-    color: ${({ theme }) => theme.text_secondary};
-    @media (max-width: 768px) {
-        margin-top: 12px;
-        font-size: 16px;
-    }
+const Block = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 40px;
+  align-items: center;
+  padding: 56px;
+  border-radius: ${({ theme }) => theme.radiusCard};
+  background: ${({ theme }) => theme.accent};
+  color: #ffffff;
+  @media (max-width: 820px) {
+    grid-template-columns: 1fr;
+    padding: 40px 28px;
+  }
 `;
 
+const Label = styled(Eyebrow)`
+  color: rgba(255, 255, 255, 0.88);
+`;
 
-const ContactForm = styled.form`
-  width: 95%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  background-color: ${({ theme }) => theme.card};
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
-  margin-top: 28px;
+const Title = styled.h2`
+  font-family: ${({ theme }) => theme.fontHead};
+  font-weight: 700;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+`;
+
+const Text = styled.p`
+  margin-top: 16px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.92);
+`;
+
+const Actions = styled.div`
+  display: grid;
   gap: 12px;
-`
+`;
 
-const ContactTitle = styled.div`
-  font-size: 24px;
-  margin-bottom: 6px;
+const ActionLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: ${({ theme }) => theme.radiusButton};
+  font-size: 15px;
   font-weight: 600;
-  color: ${({ theme }) => theme.text_primary};
-`
-
-const ContactInput = styled.input`
-  flex: 1;
-  background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.text_secondary};
-  outline: none;
-  font-size: 18px;
-  color: ${({ theme }) => theme.text_primary};
-  border-radius: 12px;
-  padding: 12px 16px;
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.primary};
-  }
-`
-
-const ContactInputMessage = styled.textarea`
-  flex: 1;
-  background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.text_secondary};
-  outline: none;
-  font-size: 18px;
-  color: ${({ theme }) => theme.text_primary};
-  border-radius: 12px;
-  padding: 12px 16px;
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.primary};
-  }
-`
-
-const ContactButton = styled.input`
-  width: 100%;
   text-decoration: none;
-  text-align: center;
-  background: hsla(271, 100%, 50%, 1);
-  background: linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%);
-  background: -moz-linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%);
-  background: -webkit-linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%);
-  padding: 13px 16px;
-  margin-top: 2px;
-  border-radius: 12px;
-  border: none;
-  color: ${({ theme }) => theme.text_primary};
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-`
-
-
-
-const Contact = () => {
-
-  //hooks
-  const [open, setOpen] = React.useState(false);
-  const form = useRef();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    emailjs.sendForm('service_tox7kqs', 'template_nv7k7mj', form.current, 'SybVGsYS52j2TfLbi')
-      .then((result) => {
-        setOpen(true);
-        form.current.reset();
-      }, (error) => {
-        console.log(error.text);
-      });
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  &:focus-visible {
+    outline-color: #ffffff;
   }
+`;
 
+const EmailLink = styled(ActionLink)`
+  background: #ffffff;
+  color: ${({ theme }) => theme.text};
+  border: 1px solid #ffffff;
+  &:hover {
+    background: #eef2ff;
+  }
+`;
 
+const GithubLink = styled(ActionLink)`
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  &:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+`;
 
-  return (
-    <Container id="contact">
-      <Wrapper>
-        <Title>Contact</Title>
-        <Desc>Feel free to reach out to me for any questions or opportunities!</Desc>
-        <ContactForm ref={form} onSubmit={handleSubmit}>
-          <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput type="email" placeholder="Your Email" name="from_email" required />
-          <ContactInput placeholder="Your Name" name="from_name" required />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" rows="4" name="message" required />
-          <ContactButton type="submit" value="Send" />
-        </ContactForm>
-        <Snackbar
-          open={open}
-          autoHideDuration={6000}
-          onClose={()=>setOpen(false)}
-          message="Email sent successfully!"
-          severity="success"
-        />
-      </Wrapper>
+const Contact = () => (
+  <Wrapper id="contact" aria-labelledby="contact-heading">
+    <Container>
+      <Block>
+        <div>
+          <Label>05 / Contact</Label>
+          <Title id="contact-heading">
+            Have a product to ship?
+            <br />
+            Let&rsquo;s talk.
+          </Title>
+          <Text>Feel free to reach out to me for any questions or opportunities!</Text>
+        </div>
+        <Actions>
+          <EmailLink href={`mailto:${Bio.email}`}>
+            Email me
+            <ArrowUpRightIcon size={16} />
+          </EmailLink>
+          <GithubLink href={Bio.github} target="_blank" rel="noopener noreferrer">
+            GitHub profile
+            <ArrowUpRightIcon size={16} />
+          </GithubLink>
+        </Actions>
+      </Block>
     </Container>
-  )
-}
+  </Wrapper>
+);
 
-export default Contact
+export default Contact;
